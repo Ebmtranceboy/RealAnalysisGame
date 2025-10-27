@@ -107,6 +107,12 @@ The proof is elegant, almost anticlimactic. That's how you know you've done math
 -/
 TheoremDoc abs_le as "abs_le" in "Theorems"
 
+-- `Antitone_of_succ` is introduced in `L13Pset1`, so this is a temporary one, so
+-- later levels don't crash.
+theorem Antitone_of_succ' {X : Type*} [Preorder X] (a : ℕ → X) (ha : ∀ n, a (n+1) ≤ a n) : Antitone a := by
+exact antitone_nat_of_succ_le ha
+
+
 /--
 If a sequence `a : ℕ → X` (where `X` can be `ℚ` or `ℝ`) is antitone and bounded, then it is Cauchy.
 -/
@@ -130,7 +136,22 @@ TheoremDoc AntitoneSubseq_of_UnBddPeaks as "AntitoneSubseq_of_UnBddPeaks" in "Th
 
 theorem AntitoneSubseq_of_UnBddPeaks
 {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X] (a : ℕ → X) (ha : UnBddPeaks a) : ∃ σ, Subseq σ ∧ Antitone (a ∘ σ) := by
-sorry
+change ∀ k, ∃ n > k, ∀ m > n, a m ≤ a n at ha
+choose τ hτbnd hτAbnd using ha
+let σ : ℕ → ℕ := fun n ↦ τ^[n] (τ 0)
+use σ
+split_ands
+apply Subseq_of_Iterate
+apply hτbnd
+apply Antitone_of_succ'
+intro n
+change a (τ^[n + 2] 0) ≤ a (τ^[n+1] 0)
+rewrite [← show τ (τ^[n] 0) = τ^[n + 1] 0 by apply succ_iterate]
+apply hτAbnd
+rewrite [← show τ (τ^[n+1] 0) = τ^[n + 2] 0 by apply succ_iterate]
+rewrite [show τ (τ^[n] 0) = τ^[n + 1] 0 by apply succ_iterate]
+apply hτbnd
+
 
 NewTheorem AntitoneSubseq_of_UnBddPeaks IsCauchyOfAntitoneBdd abs_le
 
