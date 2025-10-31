@@ -3,7 +3,7 @@ import Game.Levels.L13Lecture
 
 World "Lecture14"
 Level 1
-Title "Bolzano-Weierstass"
+Title "Bolzano-Weierstrass"
 
 Introduction "
 # Level 1 **Big Boss:**  Bolzano-Weierstrass
@@ -107,12 +107,6 @@ The proof is elegant, almost anticlimactic. That's how you know you've done math
 -/
 TheoremDoc abs_le as "abs_le" in "Theorems"
 
--- `Antitone_of_succ` is introduced in `L13Pset1`, so this is a temporary one, so
--- later levels don't crash.
-theorem Antitone_of_succ' {X : Type*} [Preorder X] (a : ℕ → X) (ha : ∀ n, a (n+1) ≤ a n) : Antitone a := by
-exact antitone_nat_of_succ_le ha
-
-
 /--
 If a sequence `a : ℕ → X` (where `X` can be `ℚ` or `ℝ`) is antitone and bounded, then it is Cauchy.
 -/
@@ -130,7 +124,7 @@ rewrite [show - - a = a by ring_nf] at negbCauchy
 apply negbCauchy
 
 /--
-If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is `Monotone` and grows along some subsequences by `ε`, then it eventually grows by `k * ε` for any `k`.
+If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) has unbounded peaks, then it has an `Antitone` subsequence.
 -/
 TheoremDoc AntitoneSubseq_of_UnBddPeaks as "AntitoneSubseq_of_UnBddPeaks" in "Theorems"
 
@@ -143,7 +137,7 @@ use σ
 split_ands
 apply Subseq_of_Iterate
 apply hτbnd
-apply Antitone_of_succ'
+apply antitone_nat_of_succ_le
 intro n
 change a (τ^[n + 2] 0) ≤ a (τ^[n+1] 0)
 rewrite [← show τ (τ^[n] 0) = τ^[n + 1] 0 by apply succ_iterate]

@@ -52,7 +52,7 @@ rewrite [show (- a m) - (- a n) = -(a m - a n) by ring_nf]
 rewrite [show |-(a m - a n)| = |(a m - a n)| by apply abs_neg]
 apply hN n hn m hm
 
-/-- If `a` is `Antitone`, then `-a` is `Monotone`. -/
+/-- If `a` satisfies `IsCauchy`, then `-a` does too. -/
 TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Theorems"
 
 
