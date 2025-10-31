@@ -50,8 +50,6 @@ This simple fact lets us convert a failed inequality into a strict one—essenti
 Each piece builds on techniques from Lecture 12: `choose` for extracting witnesses, orbits for building subsequences, and induction for verification. Now let's make it rigorous!
 "
 
-
-
 /-- If you have a proposition `P`, you can say `if P then x else y`. -/
 DefinitionDoc «if» as "if then else"
 
