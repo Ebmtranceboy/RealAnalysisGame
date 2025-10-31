@@ -106,10 +106,3 @@ This is why mathematicians like this construction of ℝ - the main theorem
 we literally construct limits as equivalence classes of sequences that \"should\"
 converge.
 "
-
-Statement (x : ℕ → ℕ → ℚ) (hx : ∀ n, IsCauchy (x n)) :
-  ∃ (y : ℕ → ℚ), IsCauchy y ∧
-
-
-Conclusion "
-"
