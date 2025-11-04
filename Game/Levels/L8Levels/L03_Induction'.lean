@@ -59,6 +59,10 @@ by omega
 /-- If a natural number `n ≠ 0`, then `1 ≤ n`. -/
 TheoremDoc ge_one_of_nonzero as "ge_one_of_nonzero" in "Theorems"
 
+/-- For all `n`, `n < 2 ^ n`. -/
+TheoremDoc IdLeTwoPow as "IdLeTwoPow" in "Theorems"
+
+
 NewTheorem ge_one_of_nonzero
 
 /-- The syntax for induction is: `induction' n with k hk`. This means: apply induction on the
@@ -70,7 +74,7 @@ NewTactic induction'
 
 /-- Prove this
 -/
-Statement (n : ℕ) : n < 2 ^ n := by
+Statement IdLeTwoPow (n : ℕ) : n < 2 ^ n := by
 induction' n with k hk
 norm_num
 by_cases hk0 : k = 0

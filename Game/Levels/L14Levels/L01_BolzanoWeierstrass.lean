@@ -1,6 +1,11 @@
 import Game.Levels.L12PsetIntro
 import Game.Levels.L13Lecture
 
+----- TO DO : Refactor this level into two:
+----- Level 1: *Any* sequence has a subsequence which is `Monotone` or `Antitone`
+----- Level 2: If a sequence is bounded, then by level 1 it has a
+----- `Mono/Anti` subsequence, and hence a Cauchy subsequence.
+
 World "Lecture14"
 Level 1
 Title "Bolzano-Weierstrass"
