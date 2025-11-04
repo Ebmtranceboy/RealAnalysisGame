@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.23.0-rc2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02\n"
+"POT-Creation-Date: 2025-11-04\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -389,12 +389,6 @@ msgstr ""
 msgid "Perfect! You've completed your first Lean proof involving real numbers.\n"
 "\n"
 "Remember: the `apply` tactic is used when you have what you need to prove the goal. Look at the top right: your list of tactics now includes `apply`, and if you forget how it works or what it does, just click on it for a reminder."
-msgstr ""
-
-#: Game.Levels.L15PsetIntro
-msgid "# Problem Set 15: Solve these problems in Natural Language:\n"
-"\n"
-"$\\# 1$"
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L05_use
@@ -826,6 +820,16 @@ msgstr ""
 msgid "Start by converting to the definition of sequential convergence using `change`."
 msgstr ""
 
+#: Game.Levels.L15Pset.L15Pset1
+msgid "# Problem 1:\n"
+"\n"
+"Prove that $0.999... = 1.0000$. Better yet, let's do it in binary.\n"
+"That is, you have two **rational** (Cauchy) sequences, `a n = 1 - 1 / 2^n` and `b n = 1`.\n"
+"The two sequences are equivalent if `a n - b n` goes to zero, that is, if for all `ε > 0, ∃ N, ∀ n ≥ N, |a n - b n| < ε`.\n"
+"\n"
+"Hint: In Lecture 8, we proved a theorem (now) called `IdLeTwoPow`..."
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory.L00_the_problem
 msgid "Write `apply h` since the hypothesis `h` is  what we want to prove."
 msgstr ""
@@ -878,6 +882,10 @@ msgid "# Algebraic manipulations\n"
 "When you have an algebraic identity involving addition, subtraction, and multiplication, `ring_nf` can often prove it automatically.\n"
 "\n"
 "Try it out on this classic binomial expansion!"
+msgstr ""
+
+#: Game.Levels.L8Levels.L03_Induction'
+msgid "For all `n`, `n < 2 ^ n`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L03_rw
@@ -2283,10 +2291,6 @@ msgid "# Problem 1:\n"
 "- `IsCauchyNeg`: if `IsCauchy a`, then so is `IsCauchy (-a)`."
 msgstr ""
 
-#: Game.Levels.L15Pset.L15Pset1
-msgid "# Problem 1:"
-msgstr ""
-
 #: Game.Levels.L10Levels.L07_Order
 msgid "Order Limit Theorem"
 msgstr ""
@@ -2723,57 +2727,7 @@ msgstr ""
 msgid "Pset 13"
 msgstr ""
 
-#: Game.Levels.L12Levels.L01_MonotoneBdd
-msgid "If `a n ≤ a (n+1)` holds for all `n`, then `a` is `Monotone`."
-msgstr ""
-
-#: Game.Levels.L11Levels.L01_IsCauchyOfLim
-msgid "`(a : ℕ → X) : Prop := ∀ (ε : X), 0 < ε → ∃ N : ℕ, ∀ n ≥ N, ∀ m ≥ n, |a m - a n| < ε`\n"
-"\n"
-"For a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is said to satisfy `IsCauchy` (that is, the sequence \\\"is Cauchy\\\") if: for every `ε > 0`, there exists `N : ℕ` such that for all `n ≥ N` and `m ≥ n`, we have `|a m - a n| < ε`."
-msgstr ""
-
-#: Game.Levels.L6Levels.L01_SplitAnds
-msgid "# Level 2: Split Ands - Breaking Down Complex Goals\n"
-"\n"
-"Now that you've conquered the Big Boss and proven that sums of convergent sequences converge, you've experienced firsthand how mathematical proofs often require us to establish multiple related facts simultaneously. In our previous proof, we needed to show that both individual sequences satisfied their epsilon conditions, and then combine these results.\n"
-"\n"
-"This pattern -- needing to prove several statements at once -- appears constantly in mathematics. Fortunately, Lean provides us with powerful tools to handle such situations elegantly. When your goal involves proving multiple statements connected by \"and\" (`∧`), the `split_ands` tactic becomes your best friend.\n"
-"\n"
-"Think of `split_ands` as a way to break down a complex manufacturing specification into individual quality checks. Instead of trying to verify that a product meets three different standards all at once, we can tackle each standard separately and systematically.\n"
-"\n"
-"## New Tools You'll Need\n"
-"\n"
-"- `split_ands`\n"
-"\n"
-"The `split_ands` tactic breaks apart \"and\" Goals into individual pieces. If your goal is `h₁ ∧ h₂ ∧ h₃`, then calling `split_ands` will break that into three separate goals, the first being\n"
-"`h₁`, the second `h₂`, and of course `h₃`"
-msgstr ""
-
-#: Game.Levels.L7Lecture
-msgid "Lecture 7: Algebraic Limit Theorem, Part III"
-msgstr ""
-
-#: Game.Levels.L15Levels.L01_check
-msgid "Completeness"
-msgstr ""
-
-#: Game.Levels.L1Pset.L1Pset2
-msgid "Did you end up using `huv`?\n"
-"And then `specialize`ing it with `u` and `v` replaced, respectively, by `x` and `y`?\n"
-"Or did you think of going via the more direct route:\n"
-"`have hxy : (x + y) ^ 2 = (x ^ 2 + y ^ 2) + 2 * (x * y) := by ring_nf`?"
-msgstr ""
-
-#: Game.Levels.L7Levels.L03_SeqInvLim
-msgid "SeqInvLim"
-msgstr ""
-
-#: Game.Levels.L3Levels.L02_OneOverN
-msgid "The `field_simp` tactic tries to clear denominators, if it can figure out that the denominators are non-zero (or in the case of inequalities, positive)."
-msgstr ""
-
-#: Game.Levels.L15Lecture
+#: Game.Levels.L16Lecture
 msgid "# Lecture 15: The Real Numbers\n"
 "\n"
 "**SIMPLICIO:** Ok, *now* can you tell me what the real numbers, `ℝ`, actually are?\n"
@@ -3078,7 +3032,10 @@ msgid "# Lecture 15: The Real Numbers\n"
 "\n"
 "\n"
 "**SOCRATES:**\n"
-"It sure does :) And you know what's even more amazing?\n"
+"It sure does :) I bet that you would now like to take back all those times\n"
+"you cursed at Lean for making you handle casting explicitly; maybe now you're\n"
+"actually *grateful* that it's as good as it is, for being able to do all\n"
+"these incredibly complicated maneuvers (almost) seamlessly under the hood! Anyway. You know what's even more amazing?\n"
 "\n"
 "**SIMPLICIO:**\n"
 "What?\n"
@@ -3111,6 +3068,147 @@ msgid "# Lecture 15: The Real Numbers\n"
 "[![Veritasium Video](https://img.youtube.com/vi/tRaq4aYPzCc/hqdefault.jpg)](https://youtu.be/tRaq4aYPzCc)\n"
 "\n"
 "Now let's keep playing."
+msgstr ""
+
+#: Game.Levels.L12Levels.L01_MonotoneBdd
+msgid "If `a n ≤ a (n+1)` holds for all `n`, then `a` is `Monotone`."
+msgstr ""
+
+#: Game.Levels.L11Levels.L01_IsCauchyOfLim
+msgid "`(a : ℕ → X) : Prop := ∀ (ε : X), 0 < ε → ∃ N : ℕ, ∀ n ≥ N, ∀ m ≥ n, |a m - a n| < ε`\n"
+"\n"
+"For a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is said to satisfy `IsCauchy` (that is, the sequence \\\"is Cauchy\\\") if: for every `ε > 0`, there exists `N : ℕ` such that for all `n ≥ N` and `m ≥ n`, we have `|a m - a n| < ε`."
+msgstr ""
+
+#: Game.Levels.L6Levels.L01_SplitAnds
+msgid "# Level 2: Split Ands - Breaking Down Complex Goals\n"
+"\n"
+"Now that you've conquered the Big Boss and proven that sums of convergent sequences converge, you've experienced firsthand how mathematical proofs often require us to establish multiple related facts simultaneously. In our previous proof, we needed to show that both individual sequences satisfied their epsilon conditions, and then combine these results.\n"
+"\n"
+"This pattern -- needing to prove several statements at once -- appears constantly in mathematics. Fortunately, Lean provides us with powerful tools to handle such situations elegantly. When your goal involves proving multiple statements connected by \"and\" (`∧`), the `split_ands` tactic becomes your best friend.\n"
+"\n"
+"Think of `split_ands` as a way to break down a complex manufacturing specification into individual quality checks. Instead of trying to verify that a product meets three different standards all at once, we can tackle each standard separately and systematically.\n"
+"\n"
+"## New Tools You'll Need\n"
+"\n"
+"- `split_ands`\n"
+"\n"
+"The `split_ands` tactic breaks apart \"and\" Goals into individual pieces. If your goal is `h₁ ∧ h₂ ∧ h₃`, then calling `split_ands` will break that into three separate goals, the first being\n"
+"`h₁`, the second `h₂`, and of course `h₃`"
+msgstr ""
+
+#: Game.Levels.L7Lecture
+msgid "Lecture 7: Algebraic Limit Theorem, Part III"
+msgstr ""
+
+#: Game.Levels.L15Levels.L01_check
+msgid "# Level 1 **Big Boss:**  Completeness!\n"
+"\n"
+"We now know that Cauchy sequences of rational numbers converge to real numbers. (Because they *are* real numbers.) Let's record this as a theorem:\n"
+"\n"
+"## New theorem: `Conv_of_IsCauchy` : If a sequence `(a : ℕ → ℚ)` satisfies `IsCauchy a`, then that implies that `SeqConv a`.\n"
+"\n"
+"Given that a limit exists, let us make the following\n"
+"\n"
+"## New definition: `Real_of_CauSeq`. This takes `IsCauchy a` and returns a real number.\n"
+"\n"
+"This real number does what we want:\n"
+"\n"
+"## New theorem: `SeqLim_of_Real_of_Cau` : `ha : IsCauchy (a : ℕ → ℚ)` implies that `SeqLim a (Real_of_CauSeq ha)`.\n"
+"\n"
+"\n"
+"Ok, but what about Cauchy sequences of real numbers? Do we need a whole other number system (the \"hyperreals\" or perhaps \"surreals\", for the Conway fans out there...)\n"
+"to capture limits of reals?\n"
+"\n"
+"No! And this is a general phenomenon: when you\n"
+"\"complete\" a space by replacing it with equivalence classes of Cauchy sequences from\n"
+"that space, the space itself is automatically \"complete\", that is, all Cauchy\n"
+"sequences in the completed space already converge in the same. Let's prove it for the reals!\n"
+"\n"
+"So again, we want to show that:\n"
+"any Cauchy sequence of *real* numbers converges to a real number.\n"
+"But we just learned that real numbers are themselves Cauchy sequences of rationals\n"
+"(or rather, equivalence classes thereof).\n"
+"Now that real numbers are represented by Cauchy sequences of rationals, what does it mean for $x_n$ to be a Cauchy sequence of reals? A Cauchy sequence of Cauchy sequences?? Let's unpack that.\n"
+"\n"
+"Let's say that we have an infinite sequence of real numbers, `x : ℕ → ℝ`, thought of as `x = (x₀, x₁, x₂, ...)`.\n"
+" Each\n"
+"real `xₙ` is secretly represented by a Cauchy sequence `(qₙ₀, qₙ₁, qₙ₂,...)` of rationals.\n"
+"So each `xₙ` is a map `ℕ → ℚ`, and the original `x` is actually a map:\n"
+"\n"
+"`q : ℕ → ℕ → ℚ`\n"
+"\n"
+"That is, `x` is really a double-indexed array of rationals:\n"
+"\n"
+"```\n"
+"       j=0    j=1    j=2    j=3    ...\n"
+"i=0:   q₀₀    q₀₁    q₀₂    q₀₃    ...   ← represents x₀\n"
+"i=1:   q₁₀    q₁₁    q₁₂    q₁₃    ...   ← represents x₁\n"
+"i=2:   q₂₀    q₂₁    q₂₂    q₂₃    ...   ← represents x₂\n"
+"i=3:   q₃₀    q₃₁    q₃₂    q₃₃    ...   ← represents x₃\n"
+" ⋮      ⋮      ⋮      ⋮      ⋮\n"
+"```\n"
+"\n"
+"Each **row** is a Cauchy sequence of rationals `qₙₘ` converging to the corresponding real `xₙ`. Wild! Let's call `hq` the condition that each of these rows is a Cauchy sequence:\n"
+"\n"
+"`hq : ∀ n, IsCauchy (q n)`\n"
+"\n"
+"Then to say that this sequence (of sequences) `xₙ` is itself \"Cauchy\" is to say (as we already know) that:\n"
+"\n"
+"`∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, |Real_of_CauSeq (hq m) - Real_of_CauSeq (hq n)| < ε`\n"
+"\n"
+"Now, let's assume this condition on our Cauchy sequence (of sequences) `x`. Our goal is to show that this sequence has a real limit, that is,\n"
+"that there is a single sequence `y : ℕ → ℚ`, satisfying\n"
+"\n"
+"`hy : IsCauchy y`\n"
+"\n"
+"and so that `xₙ → y`, which means:\n"
+"\n"
+"`SeqLim (fun n ↦ Real_of_CauSeq (hq n)) (Real_of_CauSeq hy)`.\n"
+"\n"
+"How are we supposed to construct such a thing?!?!\n"
+"\n"
+"The key insight (reminiscent of Cantor's **diagonalization** arguments, very prevalent\n"
+"in real analysis): we need to extract a single sequence of rationals from this array!\n"
+"\n"
+"**The naive attempt:** Take the diagonal sequence `(q₀₀, q₁₁, q₂₂, q₃₃, ...)`\n"
+"\n"
+"**The problem:** Each row converges at **its own rate**! Row `k` might need to go out to\n"
+"index `1000k` before it's within `ε` of its limit, and row `k+1` might need to go to index `k^2`, etc. But the diagonal only samples row `k`\n"
+"at position `k`, which might be way too early!\n"
+"\n"
+"**The solution:** For each row `k`, we need to pick an index `N(k)` that's far enough\n"
+"out that row `k` has \"converged well enough\" by that point. Then we take:\n"
+"\n"
+"`y k = q k (N (k))`\n"
+"\n"
+"This sequence `y` will be Cauchy, and it will represent the limit of our sequence of reals!\n"
+"\n"
+"**How to choose `N(k)`?** Use the fact that each `x k` (as a real number) is the limit of\n"
+"its Cauchy sequence. So for any tolerance (say `1/k`, or rather, `1/(k+1)` so it's always strictly positive), there exists an index `N(k)`\n"
+"so that for all `n ≥ m ≥ N(k)`, `q k m` stays within `1/(k+1)` of `q k n`. *That* is what we'll choose!\n"
+"\n"
+"**Your task:** Construct this sequence `y`, prove it's Cauchy, and prove that the\n"
+"sequence of reals converges to the real represented by `y`."
+msgstr ""
+
+#: Game.Levels.L15Levels.L01_check
+msgid "Completeness"
+msgstr ""
+
+#: Game.Levels.L1Pset.L1Pset2
+msgid "Did you end up using `huv`?\n"
+"And then `specialize`ing it with `u` and `v` replaced, respectively, by `x` and `y`?\n"
+"Or did you think of going via the more direct route:\n"
+"`have hxy : (x + y) ^ 2 = (x ^ 2 + y ^ 2) + 2 * (x * y) := by ring_nf`?"
+msgstr ""
+
+#: Game.Levels.L7Levels.L03_SeqInvLim
+msgid "SeqInvLim"
+msgstr ""
+
+#: Game.Levels.L3Levels.L02_OneOverN
+msgid "The `field_simp` tactic tries to clear denominators, if it can figure out that the denominators are non-zero (or in the case of inequalities, positive)."
 msgstr ""
 
 #: GameServer.RpcHandlers
@@ -3163,7 +3261,7 @@ msgstr ""
 msgid "If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is bounded, then it has a subsequence which is Cauchy."
 msgstr ""
 
-#: Game.Levels.L15Lecture
+#: Game.Levels.L16Lecture
 msgid "Lecture 15: The Real Numbers"
 msgstr ""
 
@@ -3460,72 +3558,6 @@ msgid "# 🎉 Outstanding! 🎉\n"
 "$$|a(n) - L| + |b(n) - M| < \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} = \\varepsilon$$\n"
 "\n"
 "Therefore, $c(n)$ converges to $L + M$. **QED**"
-msgstr ""
-
-#: Game.Levels.L15Levels.L01_check
-msgid "# Level 1 **Big Boss:**  Completeness!\n"
-"\n"
-"We know that Cauchy sequences of rational numbers converge to real numbers.\n"
-"But what about Cauchy sequences of real numbers? Do we need a whole other number system (the \"hyperreals\" or perhaps \"surreals\", for the Conway fans out there...)\n"
-"to capture limits of reals? No! And this is a general phenomenon: when you\n"
-"\"complete\" a space by replacing it with equivalence classes of Cauchy sequences from\n"
-"that space, the space itself is automatically \"complete\", that is, all Cauchy\n"
-"sequences in the completed space already converge in the same. Let's prove it for the reals!\n"
-"\n"
-"So again, we want to show that:\n"
-"any Cauchy sequence of *real* numbers converges to a real number.\n"
-"But we just learned that real numbers are themselves Cauchy sequences of rationals\n"
-"(or rather, equivalence classes thereof). So how can we prove completeness?\n"
-"\n"
-"Let's say that our sequence of reals is `(x₀, x₁, x₂, ...)`. Each\n"
-"real `xᵢ` is secretly represented by a Cauchy sequence `(qᵢ₀, qᵢ₁, qᵢ₂,...)` of rationals.\n"
-"\n"
-"So we actually have a double-indexed array of rationals:\n"
-"\n"
-"```\n"
-"       j=0    j=1    j=2    j=3    ...\n"
-"i=0:   q₀₀    q₀₁    q₀₂    q₀₃    ...   ← represents x₀\n"
-"i=1:   q₁₀    q₁₁    q₁₂    q₁₃    ...   ← represents x₁\n"
-"i=2:   q₂₀    q₂₁    q₂₂    q₂₃    ...   ← represents x₂\n"
-"i=3:   q₃₀    q₃₁    q₃₂    q₃₃    ...   ← represents x₃\n"
-" ⋮      ⋮      ⋮      ⋮      ⋮\n"
-"```\n"
-"\n"
-"Each **row** is a Cauchy sequence of rationals `q` converging to the corresponding real `x`.\n"
-"\n"
-"The key insight (reminiscent of Cantor's **diagonalization** arguments, very prevalent\n"
-"in real analysis): we need to extract a single sequence of rationals from this array!\n"
-"\n"
-"**The naive attempt:** Take the diagonal sequence `(q₀₀, q₁₁, q₂₂, q₃₃, ...)`\n"
-"\n"
-"**The problem:** Each row converges at its own rate! Row `n` might need to go out to\n"
-"index `1000n` before it's within `ε` of its limit, and row `n+1` might need to go to index `n^2`, etc. But the diagonal only samples row `n`\n"
-"at position `n`, which might be way too early!\n"
-"\n"
-"**The solution:** For each row `n`, we need to pick an index `N(n)` that's far enough\n"
-"out that row `n` has \"converged well enough\" by that point. Then we take:\n"
-"\n"
-"`y n = q n (N(n))`\n"
-"\n"
-"This sequence `y` will be Cauchy, and it will represent the limit of our sequence of reals!\n"
-"\n"
-"**How to choose `N(n)`?** Use the fact that each `x n` (as a real number) is the limit of\n"
-"its Cauchy sequence. So for any tolerance (say `1/n`), there exists an index `N(n)`\n"
-"so that for all `m ≥ N(n)`, `q n m` stays within `1/n` of `x n`. *That* is what we'll choose!\n"
-"\n"
-"**Your task:** Construct this sequence `y`, prove it's Cauchy, and prove that the\n"
-"sequence of reals converges to the real represented by `y`.\n"
-"\n"
-"\n"
-"## New theorem: `Conv_of_IsCauchy` : `IsCauchy (a : ℕ → X)` implies that `SeqConv a`.\n"
-"\n"
-"Given that a limit exists, we get the following\n"
-"\n"
-"## New definition: `Real_of_CauSeq` takes `IsCauchy a` and returns a real number.\n"
-"\n"
-"This real number does what we want:\n"
-"\n"
-"## New theorem: `SeqLim_of_Real_of_Cau` : `ha : IsCauchy (a : ℕ → X)` implies that `SeqLim a (Real_of_CauSeq ha)`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L08_choose
@@ -3925,27 +3957,6 @@ msgstr ""
 msgid "Done. (Hopefully you didn't do that by hand, but rather quoted -- twice -- a theorem that we recently proved?)"
 msgstr ""
 
-#: Game.Levels.L15Levels.L01_check
-msgid "Excellent! You've just proved that the diagonal sequence is Cauchy!\n"
-"\n"
-"This is the heart of the completeness proof. The full argument would show that:\n"
-"\n"
-"1. The diagonal sequence `y = (q₀₀, q₁₁, q₂₂, ...)` is Cauchy ✓ (what you just proved!)\n"
-"2. Each real `xₙ` is equivalent to subsequences of `y`\n"
-"3. Therefore `(xₙ)` converges to `[y]` (the equivalence class of `y`)\n"
-"\n"
-"The beautiful thing is that **completeness becomes almost tautological** with\n"
-"this construction: Cauchy sequences of Cauchy sequences give you a Cauchy sequence!\n"
-"\n"
-"This is why mathematicians like this construction of ℝ - the main theorem\n"
-"(completeness) essentially falls out of the definition for free.\n"
-"\n"
-"**Philosophical note:** With the Dedekind cut construction, completeness is also\n"
-"\"automatic\" but for different reasons. With Cauchy sequences, it's more direct:\n"
-"we literally construct limits as equivalence classes of sequences that \"should\"\n"
-"converge."
-msgstr ""
-
 #: Game.Levels.L1RealAnalysisStory.L08_choose
 msgid "# Extracting information from existential quantifiers\n"
 "\n"
@@ -4010,6 +4021,16 @@ msgstr ""
 
 #: Game.Levels.L6Levels.L06_Squeeze
 msgid "Big Boss : Squeeze Theorem"
+msgstr ""
+
+#: Game.Levels.L15PsetIntro
+msgid "# Problem Set 15: Solve these problems in Natural Language:\n"
+"\n"
+"$\\# 1)$ Let $a_0 := \\sqrt2$, and $a_{n+1}:=\\sqrt{2+\\sqrt{a_n}}$. Prove that $a_n < 2$ hols for all $n$, and that $a_n$ converges.\n"
+"\n"
+"$\\# 2)$ Calculate $\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+n}-n\\right)$ rigorously.\n"
+"\n"
+"$\\# 3)$"
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset4
@@ -4260,6 +4281,10 @@ msgstr ""
 
 #: Game.Levels.L13Levels.L03_MonotoneSubseq
 msgid "If you have a proposition `P`, you can say `if P then x else y`."
+msgstr ""
+
+#: Game.Levels.L15Lecture
+msgid "# Lecture 16: Series"
 msgstr ""
 
 #: Game.Levels.L6Pset.L6Pset5
@@ -4685,6 +4710,7 @@ msgstr ""
 #: Game.Levels.L12Pset.L12Pset1
 #: Game.Levels.L12Pset.L12Pset2
 #: Game.Levels.L13Pset.L13Pset1
+#: Game.Levels.L15Levels.L01_check
 #: Game.Levels.L15Pset.L15Pset1
 msgid ""
 msgstr ""
@@ -5918,6 +5944,10 @@ msgid "# 🎉 Excellent Work! 🎉\n"
 "\n"
 "Therefore, for any $n \\geq N$, we have $|a(n) - L| = 0 < \\varepsilon$, which proves convergence.\n"
 "**QED**"
+msgstr ""
+
+#: Game.Levels.L15Lecture
+msgid "Lecture 16: Series"
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset1
