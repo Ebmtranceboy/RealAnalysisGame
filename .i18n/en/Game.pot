@@ -27,6 +27,12 @@ msgid "# Problem 5:\n"
 "Show that the sequence `a n = n` is unbounded."
 msgstr ""
 
+#: Game.Levels.L16Levels.L01_check
+msgid "`(a : ℕ → ℝ) : Prop := SeqConv (Series a)`\n"
+"\n"
+"The Series of a sequence `a : N → ℝ` converges if the sequence of its partial sums converges."
+msgstr ""
+
 #: Game.Levels.L7Levels.L02_SeqOfAbs
 msgid "The absolute value function is Lipschitz with constant 1."
 msgstr ""
@@ -828,6 +834,20 @@ msgid "# Problem 1:\n"
 "The two sequences are equivalent if `a n - b n` goes to zero, that is, if for all `ε > 0, ∃ N, ∀ n ≥ N, |a n - b n| < ε`.\n"
 "\n"
 "Hint: In Lecture 8, we proved a theorem (now) called `IdLeTwoPow`..."
+msgstr ""
+
+#: Game.Levels.L16Levels.L01_check
+msgid "# Level 1: Series\n"
+"\n"
+"Given a sequence `a : ℕ → ℝ`, we define a sequence `b : ℕ → ℝ` to be the \"series\" of `a`, meaning the sequence of partial sums:\n"
+"\n"
+"**Def:** `Series (a : ℕ → ℝ) : ℕ → ℝ := fun n ↦ ∑ k ∈ range n, a k`\n"
+"\n"
+"A **series is said to converge** if the sequence of its partial sums converges.\n"
+"\n"
+"**Def:** `SeriesConv (a : ℕ → ℝ) : Prop := SeqConv (Series a)`.\n"
+"\n"
+"Your challenge: If a series converges, then its terms go to zero!"
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L00_the_problem
@@ -2654,6 +2674,10 @@ msgstr ""
 msgid "Left and Right"
 msgstr ""
 
+#: Game.Levels.L16Levels.L01_check
+msgid "If a series converges, then the terms go to zero"
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory.L05_use
 msgid "# Proving existence\n"
 "\n"
@@ -2727,7 +2751,7 @@ msgstr ""
 msgid "Pset 13"
 msgstr ""
 
-#: Game.Levels.L16Lecture
+#: Game.Levels.L15Lecture
 msgid "# Lecture 15: The Real Numbers\n"
 "\n"
 "**SIMPLICIO:** Ok, *now* can you tell me what the real numbers, `ℝ`, actually are?\n"
@@ -3261,7 +3285,7 @@ msgstr ""
 msgid "If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is bounded, then it has a subsequence which is Cauchy."
 msgstr ""
 
-#: Game.Levels.L16Lecture
+#: Game.Levels.L15Lecture
 msgid "Lecture 15: The Real Numbers"
 msgstr ""
 
@@ -3654,6 +3678,10 @@ msgid "# Welcome to Real Analysis, The Game!\n"
 "**\"Level 1: The Story of Real Analysis\"**, and good luck!"
 msgstr ""
 
+#: Game.Levels.L16Levels.L01_check
+msgid "Series"
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory.L03_rw
 msgid "The `rewrite` tactic"
 msgstr ""
@@ -4023,16 +4051,6 @@ msgstr ""
 msgid "Big Boss : Squeeze Theorem"
 msgstr ""
 
-#: Game.Levels.L15PsetIntro
-msgid "# Problem Set 15: Solve these problems in Natural Language:\n"
-"\n"
-"$\\# 1)$ Let $a_0 := \\sqrt2$, and $a_{n+1}:=\\sqrt{2+\\sqrt{a_n}}$. Prove that $a_n < 2$ hols for all $n$, and that $a_n$ converges.\n"
-"\n"
-"$\\# 2)$ Calculate $\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+n}-n\\right)$ rigorously.\n"
-"\n"
-"$\\# 3)$"
-msgstr ""
-
 #: Game.Levels.L1Pset.L1Pset4
 #: Game.Levels.L3Pset.L3Pset4
 #: Game.Levels.L6Pset.L6Pset4
@@ -4283,7 +4301,7 @@ msgstr ""
 msgid "If you have a proposition `P`, you can say `if P then x else y`."
 msgstr ""
 
-#: Game.Levels.L15Lecture
+#: Game.Levels.L16Lecture
 msgid "# Lecture 16: Series"
 msgstr ""
 
@@ -4642,6 +4660,12 @@ msgid "# Level 7 Big Boss: Squeeze Theorem\n"
 "The formal proof requires careful epsilon management. Given any tolerance `ε`, you need to show that `b (n)` gets within `ε` of `L`. Since `a (n)` and `c (n)` both get within `ε` of `L`, and `b (n)` is squeezed between them, you can use the transitivity of inequalities to show that `b (n)` is also within `ε` of `L`."
 msgstr ""
 
+#: Game.Levels.L16Levels.L01_check
+msgid "`(a : ℕ → ℝ) : ℕ → ℝ := fun n ↦ ∑ k ∈ range n, a k`\n"
+"\n"
+"Given a sequence `a : ℕ → ℝ`, the `Series a` is the sequence of its partial sums."
+msgstr ""
+
 #: Game.Levels.L5Levels.L01_DoubleSeqConv
 msgid "Also try unfolding the definition in `h`: `change ∀ ε₁ > 0, ∃ N₁ : ℕ, ∀ n ≥ N₁, |a n - L| < ε₁ at h`"
 msgstr ""
@@ -4712,6 +4736,7 @@ msgstr ""
 #: Game.Levels.L13Pset.L13Pset1
 #: Game.Levels.L15Levels.L01_check
 #: Game.Levels.L15Pset.L15Pset1
+#: Game.Levels.L16Levels.L01_check
 msgid ""
 msgstr ""
 
@@ -5650,6 +5675,22 @@ msgstr ""
 msgid "Prove that this sequence diverges."
 msgstr ""
 
+#: Game.Levels.L15PsetIntro
+msgid "# Problem Set 15: Solve these problems in Natural Language:\n"
+"\n"
+"$\\# 1)$ Let $a_0 := \\sqrt2$, and $a_{n+1}:=\\sqrt{2+\\sqrt{a_n}}$. Prove that $a_n < 2$ holds for all $n$, and that $a_n$ converges.\n"
+"\n"
+"$\\# 2)$ Calculate $\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+n}-n\\right)$ rigorously.\n"
+"\n"
+"$\\# 3)$ Show that if a sequence `a : ℕ → ℝ` is convergent,\n"
+" then the \"Cesaro-average\" sequence given by:\n"
+"\n"
+" `b n = (a 0 + a 1 + ... + a (n-1)) / n`\n"
+"\n"
+"converges, and to the same limit. Give an example of a sequence `a : ℕ → ℝ` which\n"
+"does *not* converge, but for which the Cesaro average sequence does converge."
+msgstr ""
+
 #: Game.Levels.L3Lecture
 msgid "# More on sequences\n"
 "\n"
@@ -5946,7 +5987,7 @@ msgid "# 🎉 Excellent Work! 🎉\n"
 "**QED**"
 msgstr ""
 
-#: Game.Levels.L15Lecture
+#: Game.Levels.L16Lecture
 msgid "Lecture 16: Series"
 msgstr ""
 
