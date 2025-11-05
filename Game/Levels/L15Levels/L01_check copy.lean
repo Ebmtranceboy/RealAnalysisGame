@@ -1,5 +1,7 @@
 import Game.Levels.L14Lecture
 
+open Finset
+
 World "Lecture15"
 Level 1
 Title "Completeness"
@@ -95,53 +97,71 @@ sequence of reals converges to the real represented by `y`.
 
 "
 
-theorem Conv_of_IsCauchy {a : ℕ → ℚ} (ha : IsCauchy a) : SeqConv (a ·) := by
--- in Mathlib
-  sorry
+def SeqDiffBy (q : ℕ → ℚ) (r : ℕ → ℚ) (ε : ℚ) : Prop := ∃ M, ∀ i ≥ M, |q i - r i| < ε
 
-noncomputable def Real_of_CauSeq {a : ℕ → ℚ} (ha : IsCauchy a) : ℝ := by
-  choose L hL using Conv_of_IsCauchy ha
-  exact L
 
-theorem SeqLim_of_Real_of_Cau {a : ℕ → ℚ} (ha : IsCauchy a) : SeqLim (a ·) (Real_of_CauSeq ha) :=
-Classical.choose_spec (Conv_of_IsCauchy ha)
 
 Statement (q : ℕ → ℕ → ℚ) (hq : ∀ n, IsCauchy (q n))
-  (hx : ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, |Real_of_CauSeq (hq m) - Real_of_CauSeq (hq n)| < ε) :
-  ∃ (y : ℕ → ℚ) (hy : IsCauchy y), SeqLim (fun n ↦ Real_of_CauSeq (hq n)) (Real_of_CauSeq hy) := by
+  (hx : ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, SeqDiffBy (q m) (q n) ε) :
+  ∃ (y : ℕ → ℚ), (IsCauchy y) ∧
+  ∀ ε > 0, ∃ N, ∀ n ≥ N, SeqDiffBy (q n) y ε
+  := by
+choose N hN using fun n ↦ hq n (1 / (n + 1)) (by bound)
+let N' := fun n ↦ ∑ k ∈ range n, N k
+have N'mono : Monotone N' := by sorry
+let y := fun n ↦ q n (N' n)
+use y
+split_ands
+intro ε hε
+choose N1 hN1 using hx (ε / 2) (by bound)
+choose N2 hN2 using ArchProp (show (0 : ℝ) < ε / 2 by norm_num; bound)
+use N1 + N2
+intro n hn m hm
+change |q m (N' m) - q n (N' n)| < ε
+have f1 : |q m (N' m) - q n (N' n)| = |(q m (N' m) -  q m (N' n)) + (q m (N' n) - q n (N' n))| := by ring_nf
+have f2 : |(q m (N' m) -  q m (N' n)) + (q m (N' n) - q n (N' n))| ≤
+  |q m (N' m) -  q m (N' n)| + |q m (N' n) - q n (N' n)| := by apply abs_add
+
+
+
+
+
+
+
+
+
+
+
+sorry
+sorry
+
+#exit
 choose N hN using fun (n : ℕ) ↦ SeqLim_of_Real_of_Cau (hq n) (1 / (n + 1)) (by bound)
-let x := fun n ↦ Real_of_CauSeq (hq n)
-change  ∀ n, ∀ m ≥ N n, |(q n m) - x n| < 1 / (n + 1) at hN
+change  ∀ n, ∀ m ≥ N n, |(q n m) - Real_of_CauSeq (hq n)| < 1 / (n + 1) at hN
 let y := fun n ↦ q n (N n)
 use y
 have hy : IsCauchy y := by
   intro ε hε
-  have hε' : (0 : ℝ) < ε := by exact_mod_cast hε
   choose N1 hN1 using hx (ε / 3) (by norm_num; bound)
   choose N2 hN2 using ArchProp (show (0 : ℝ) < ε / 3 by norm_num; bound)
   use N1 + N2
   intro n hn m hm
   change |(q m (N m)) - q n (N n)| < ε
   specialize hN1 n (by bound) m hm
-  change |(x m - x n)| < ε / 3  at hN1
+  let xn := Real_of_CauSeq (hq n)
+  let xm := Real_of_CauSeq (hq m)
+  change |(xm - xn)| < ε / 3  at hN1
   have qnBnd := hN n (N n) (by bound)
-  change |(q n (N n)) - x n| < 1 / (n + 1) at qnBnd
+  change |(q n (N n)) - xn| < 1 / (n + 1) at qnBnd
   have qmBnd := hN m (N m) (by bound)
-  change |(q m (N m)) - x m| < 1 / (m + 1) at qmBnd
-  have f1 : |(q m (N m) : ℝ) - q n (N n)| = |(q m (N m) - x m) + ((x n - q n (N n)) + (x m - x n))| := by ring_nf
-  have f2 : |(q m (N m) - x m) + ((x n - q n (N n)) + (x m - x n))| ≤
-    |(q m (N m) - x m)| + |(x n - q n (N n)) + (x m - x n)| := by apply abs_add
-  have f3 : |(x n - q n (N n)) + (x m - x n)| ≤ |(x n - q n (N n))| + |(x m - x n)| := by apply abs_add
-  have f3' : |(x n - q n (N n))| = |q n (N n) - x n| := by apply abs_sub_comm
-  field_simp at hN2
-  have hn' : (N1 : ℝ) + N2 ≤ n := by exact_mod_cast hn
-  have hm' : (n : ℝ) ≤ m := by exact_mod_cast hm
-  have f4' : (N2 : ℝ) ≤ n := by bound
-  have f4'' : (N2 : ℝ) * ε ≤ n * ε := by bound
-  have f4 : (1 : ℝ) / (n + 1) < ε / 3 := by field_simp; bound
-  have f5' : (N2 : ℝ) ≤ m := by bound
-  have f5'' : (N2 : ℝ) * ε ≤ m * ε := by bound
-  have f5 : (1 : ℝ) / (m + 1) < ε / 3 := by field_simp; bound
+  change |(q m (N m)) - xm| < 1 / (m + 1) at qmBnd
+  have f1 : |(q m (N m) : ℝ) - q n (N n)| = |(q m (N m) - xm) + ((xn - q n (N n)) + (xm - xn))| := by ring_nf
+  have f2 : |(q m (N m) - xm) + ((xn - q n (N n)) + (xm - xn))| ≤
+    |(q m (N m) - xm)| + |(xn - q n (N n)) + (xm - xn)| := by apply abs_add
+  have f3 : |(xn - q n (N n)) + (xm - xn)| ≤ |(xn - q n (N n))| + |(xm - xn)| := by apply abs_add
+  have f3' : |(xn - q n (N n))| = |q n (N n) - xn| := by apply abs_sub_comm
+  have f4 : (1 : ℝ) / (n + 1) < ε / 3 := by sorry
+  have f5 : (1 : ℝ) / (m + 1) < ε / 3 := by sorry
   have f6 : |(q m (N m) : ℝ) - q n (N n)| < ε := by linarith [f1, f2, f3, f4, f5, qnBnd, qmBnd, hN1, f3']
   exact_mod_cast f6
 use hy
@@ -165,16 +185,27 @@ change |y n - xn| < 1 / (n + 1) at hN
 rewrite [show |y n - xn| = |xn - y n| by apply abs_sub_comm] at hN
 specialize hN3 n (by bound)
 
-field_simp at hN2
-have hn' : (N1 : ℝ) + N2 + N3 ≤ n := by norm_cast
-have f2' : (N2 : ℝ) ≤ n := by bound
-have f2'' : (N2 : ℝ) * ε ≤ n * ε := by bound
-have f2 : (1 : ℝ) / (n + 1) < ε / 2 := by field_simp; bound
+have f2 : (1 : ℝ) / (n + 1) < ε / 2 := by sorry
 
 linarith [f1, f2, hN, hN3]
 
 Conclusion "
 "
+-- TALK ABOUT THE NEED  (And HOW) TO DO THIS FOR EQUIVALENCE CLASSES
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #exit

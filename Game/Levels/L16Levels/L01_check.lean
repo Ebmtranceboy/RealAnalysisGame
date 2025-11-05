@@ -20,9 +20,23 @@ Your challenge: If a series converges, then its terms go to zero!
 
 "
 
+
+
+/-- `(a : ℕ → ℝ) : ℕ → ℝ := fun n ↦ ∑ k ∈ range n, a k`
+
+Given a sequence `a : ℕ → ℝ`, the `Series a` is the sequence of its partial sums. -/
+DefinitionDoc Series as "Series"
+
 def Series (a : ℕ → ℝ) : ℕ → ℝ := fun n ↦ ∑ k ∈ range n, a k
 
+/-- `(a : ℕ → ℝ) : Prop := SeqConv (Series a)`
+
+The Series of a sequence `a : N → ℝ` converges if the sequence of its partial sums converges. -/
+DefinitionDoc SeriesConv as "SeriesConv"
+
 def SeriesConv (a : ℕ → ℝ) : Prop := SeqConv (Series a)
+
+NewDefinition Series SeriesConv
 
 /-- If a series converges, then the terms go to zero
 -/
