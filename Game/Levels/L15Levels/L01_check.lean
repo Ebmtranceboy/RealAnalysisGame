@@ -99,14 +99,31 @@ theorem Conv_of_IsCauchy {a : ℕ → ℚ} (ha : IsCauchy a) : SeqConv (a ·) :=
 -- in Mathlib
   sorry
 
+/-- `{a : ℕ → ℚ} (ha : IsCauchy a) : ℝ`
+
+A sequence `a : ℕ → ℚ` that is Cauchy converges to a real number; this *is* that real number. -/
+DefinitionDoc Real_of_CauSeq as "Real_of_CauSeq"
+
+NewDefinition Real_of_CauSeq
+
 noncomputable def Real_of_CauSeq {a : ℕ → ℚ} (ha : IsCauchy a) : ℝ := by
   choose L hL using Conv_of_IsCauchy ha
   exact L
 
+
 theorem SeqLim_of_Real_of_Cau {a : ℕ → ℚ} (ha : IsCauchy a) : SeqLim (a ·) (Real_of_CauSeq ha) :=
 Classical.choose_spec (Conv_of_IsCauchy ha)
 
-Statement (q : ℕ → ℕ → ℚ) (hq : ∀ n, IsCauchy (q n))
+/-- If a sequence `a : ℕ → ℝ` is Cauchy, then it converges (that is, `SeqLim` holds)
+to the real number defined in `Real_of_CauSeq`. -/
+TheoremDoc SeqLim_of_Real_of_Cau as "SeqLim_of_Real_of_Cau" in "Theorems"
+
+NewTheorem SeqLim_of_Real_of_Cau
+
+/-- The real numbers are complete; Cauchy sequences in the reals converge to a real number. -/
+TheoremDoc Reals_are_Complete as "Reals_are_Complete" in "Theorems"
+
+Statement Reals_are_Complete (q : ℕ → ℕ → ℚ) (hq : ∀ n, IsCauchy (q n))
   (hx : ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, |Real_of_CauSeq (hq m) - Real_of_CauSeq (hq n)| < ε) :
   ∃ (y : ℕ → ℚ) (hy : IsCauchy y), SeqLim (fun n ↦ Real_of_CauSeq (hq n)) (Real_of_CauSeq hy) := by
 choose N hN using fun (n : ℕ) ↦ SeqLim_of_Real_of_Cau (hq n) (1 / (n + 1)) (by bound)
@@ -175,78 +192,3 @@ linarith [f1, f2, hN, hN3]
 
 Conclusion "
 "
-
-
-#exit
-
-
-WRONG:
-
-Excellent! You've just proved that the diagonal sequence is Cauchy!
-
-This is the heart of the completeness proof. The full argument would show that:
-
-1. The diagonal sequence `y = (q₀₀, q₁₁, q₂₂, ...)` is Cauchy ✓ (what you just proved!)
-2. Each real `xₙ` is equivalent to subsequences of `y`
-3. Therefore `(xₙ)` converges to `[y]` (the equivalence class of `y`)
-
-The beautiful thing is that **completeness becomes almost tautological** with
-this construction: Cauchy sequences of Cauchy sequences give you a Cauchy sequence!
-
-This is why mathematicians like this construction of ℝ - the main theorem
-(completeness) essentially falls out of the definition for free.
-
-**Philosophical note:** With the Dedekind cut construction, completeness is also
-\"automatic\" but for different reasons. With Cauchy sequences, it's more direct:
-we literally construct limits as equivalence classes of sequences that \"should\"
-converge.
-
-
-
-
-
-
-OLD:
-
-
-First of all, how can we tell when two real numbers differ by at most $ε$?
-If $x$ is represented by the rational Cauchy sequence $(q_n)$ and `y:ℝ` by $(r_n)$, then what does it mean when we say that `|x - y| < ε`? Idea: it means that *eventually* the Cauchy sequences also differ by at most `ε`!
-
-**Def** `SeqDiffBy (q : ℕ → ℚ) (r : ℕ → ℚ) (ε : ℚ) : Prop :=`
-`∃ N, ∀ n ≥ N, ∀ m ≥ N, |q m - r n| < ε`.
-
-This is a kind of \"mixed Cauchy\" condition!
-But notice that we are **no longer** assuming that `m ≥ n ≥ N`; because
-we don't want to necessarily force that, now that there's no symmetry between `q m` and `r n`.
-
-Now
-
-
-...
-
-
-Wild!  This sequence (of sequences) is \"Cauchy\" iff (as we already know):
-
-`∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, SeqDiffBy (q m) (q n) ε`
-
-`∀ ε > 0, ∃ N, ∀ n ≥ N, SeqDiffBy (q n) y ε`
-
-
-
-....
-
-
-choose N hN using fun (k : ℕ) ↦ hx ((1 : ℚ) / (k + 1)) (by bound)
-change ∀ k, ∀ n ≥ N k, ∀ m ≥ n, ∃ M, ∀ i ≥ M, ∀ j ≥ M, |q m j - q n i| < (1 / (k + 1)) at hN
-use fun k ↦ q k (N k)
-split_ands
-intro ε hε
-change ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, ∃ M, ∀ i ≥ M, ∀ j ≥ M, |q m j - q n i| < ε at hx
-choose N1 hN1 using hx (ε / 3) (by norm_num; bound)
-choose N2 hN2 using ArchProp (show (0 : ℝ) < ε / 3 by norm_num; bound)
-use N1 + N2
-intro n hn m hm
-change |(q m (N m)) - q n (N n)| < ε
-have qnBnd := hN n (N n) (by bound)
-have qmBnd := hN m (N m) (by bound)
-specialize hN1 n (by bound) m hm
