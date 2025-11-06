@@ -42,7 +42,7 @@ This theorem can also be used to prove the **Squeeze Theorem** (which we already
 
 /-- `(a : ℕ → ℝ) (M : ℝ) := ∀ n, a n ≤ M`
 
-A sequence `a : N → ℝ` is *bounded by* (`SeqBddBy` holds) `M : ℝ` if, for all `n`, `a n ≤ M`, for all `n`. -/
+A sequence `a : ℕ → ℝ` is *bounded by* (`SeqBddBy` holds) `M : ℝ` if, for all `n`, `a n ≤ M`, for all `n`. -/
 DefinitionDoc SeqBddBy as "SeqBddBy"
 
 NewDefinition SeqBddBy
