@@ -50,7 +50,7 @@ and you wanted to prove this fact by
 invoking the ring normal form tactic,
  then you would give Lean the command:
 
-`have huv (u v : ℝ), (u ^ 2 + v ^ 2) + 2 * (u * v) := by ring_nf`
+`have huv (u v : ℝ) : (u ^ 2 + v ^ 2) + 2 * (u * v) := by ring_nf`
 
 This will add to your list of hypotheses
 the fact: `huv : ∀ (u v : ℝ), (u ^ 2 + v ^ 2) + 2 * (u * v)`.
