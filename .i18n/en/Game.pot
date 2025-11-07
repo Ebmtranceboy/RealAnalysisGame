@@ -1,7 +1,7 @@
 msgid ""
 msgstr "Project-Id-Version: Game v4.23.0-rc2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-06\n"
+"POT-Creation-Date: 2025-11-07\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -111,6 +111,10 @@ msgstr ""
 
 #: Game.Levels.L6Levels.L04_Cases'
 msgid "When have a hypothesis `h : P ∨ Q`, you can say `cases' h with h1 h2`; this will make two new Game Boards, one with an extra hypothesis `h1 : P`, and the other with the hypothesis `h2 : Q`. You'll have to solve both to solve the original Goal!"
+msgstr ""
+
+#: Game.Levels.L16Pset.L16Pset2
+msgid "The partial sums of the series `∑ k, c * a k` is equal to that of `c * ∑ k, a k`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L02_rfl
@@ -607,6 +611,7 @@ msgstr ""
 #: Game.Levels.L9Pset.L9Pset2
 #: Game.Levels.L10Pset.L10Pset3
 #: Game.Levels.L12Pset.L12Pset2
+#: Game.Levels.L16Pset.L16Pset2
 msgid "Problem 2"
 msgstr ""
 
@@ -658,59 +663,14 @@ msgid "# Level 1: Induction\n"
 "- Use `ring_nf` to simplify `2 * 2^k = 2^(k+1)`"
 msgstr ""
 
-#: Game.Levels.L1Pset.L1Pset2
-msgid "# Problem 2\n"
+#: Game.Levels.L17Levels.L01
+msgid "# Level 1: Leibniz Series\n"
 "\n"
-"In this problem you are asked to show that there is some `c` so that `(x + y) ^ 2 = c`, given that\n"
-"`x * y = 1` and `x ^ 2 + y ^ 2 = 2`.\n"
+"Let's evaluate this series, known to Leibniz, explicitly:\n"
 "\n"
-"You will likely have a hard time solving this problem as is.\n"
-"You surely can work out what value of\n"
-"`c` you need. But if you try\n"
-"`ring_nf`, you won't have control over\n"
-"how the \"normal form\" chooses to\n"
-"express things. In fact, the\n"
-"left-hand side, `(x + y) ^ 2` will\n"
-"turn into `x * y * 2 + x ^ 2 + y ^ 2`,\n"
-"which is parsed in this order:\n"
+"`∑ k, 1 / ((k + 1) * (k + 2)) = 1 / 2 + 1/6 + 1/12 + 1/20 + 1/30 +...`.\n"
 "\n"
-"`(((x * y) * 2) + x ^ 2) + y ^ 2`\n"
-"\n"
-"This means that you *will* be able to\n"
-"`rewrite [h2]` successfully,\n"
-"but then you will *not* be able to rewrite by `h1`, because the (invisible) parentheses  go the wrong way. (Hint: If you want to know how things are grouped but don't see parentheses, you can hover your cursor over the text in the Goal State, and Lean will show you the groupings. Try it!)\n"
-"\n"
-"Now, in natural language, there are times when you might want to\n"
-"record an auxiliary fact: \"let's\n"
-"*have* the fact that such and such ...\". The Lean\n"
-"syntax for this is as follows:\n"
-"\n"
-"`have NewFactName (Assumptions) : Conclusion := by Proof`\n"
-"\n"
-"That is, you first write `have`; then give\n"
-"the new hypothesis a name; then include any\n"
-"assumptions, like `(x : ℝ)`, meaning, `x`\n"
-"is a real number, etc (the symbol `ℝ` is written with a backslash, then capital `R`, then space); then you put a colon,\n"
-"and then state the conclusion; then you\n"
-"put a colon-equals and the word `by`; and finally you give the proof.\n"
-"\n"
-"For example, if you wanted to declare\n"
-"the new fact that, say, for any real `u` and `v`,\n"
-"\n"
-"`(u + v) ^ 2 = (u ^ 2 + v ^ 2) + 2 * (u * v)`\n"
-"\n"
-"and you wanted to call this fact `huv` (a hypothesis on `u` and `v`),\n"
-"and you wanted to prove this fact by\n"
-"invoking the ring normal form tactic,\n"
-" then you would give Lean the command:\n"
-"\n"
-"`have huv (u v : ℝ), (u ^ 2 + v ^ 2) + 2 * (u * v) := by ring_nf`\n"
-"\n"
-"This will add to your list of hypotheses\n"
-"the fact: `huv : ∀ (u v : ℝ), (u ^ 2 + v ^ 2) + 2 * (u * v)`.\n"
-"\n"
-"Something like this (if not exactly this)\n"
-"will be useful to you in solving this problem."
+"First let's evaluate the partial sums explicitly."
 msgstr ""
 
 #: Game.Levels.L13PsetIntro
@@ -1504,6 +1464,10 @@ msgstr ""
 msgid "The rfl tactic"
 msgstr ""
 
+#: Game.Levels.L17Levels.L04
+msgid "The Basel Problem"
+msgstr ""
+
 #: Game.Levels.L15Levels.L01_check
 msgid "# Level 1 **Big Boss:** Completeness!\n"
 "\n"
@@ -1691,6 +1655,9 @@ msgstr ""
 #: Game.Levels.L13Levels.L03_MonotoneSubseq
 #: Game.Levels.L14Levels.L01_BolzanoWeierstrass
 #: Game.Levels.L15Pset.L15Pset1
+#: Game.Levels.L16Pset.L16Pset1
+#: Game.Levels.L16Pset.L16Pset2
+#: Game.Levels.L16Pset.L16Pset3
 msgid "Prove this"
 msgstr ""
 
@@ -2443,6 +2410,11 @@ msgstr ""
 msgid "Order Limit Theorem"
 msgstr ""
 
+#: Game.Levels.L17Levels.L01
+#: Game.Levels.L17Levels.L02
+msgid "Leibniz Series"
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory
 msgid "# A First Course in Real Analysis\n"
 "\n"
@@ -2768,6 +2740,11 @@ msgstr ""
 msgid "Every mathematical expression equals itself."
 msgstr ""
 
+#: Game.Levels.L17Levels.L01
+#: Game.Levels.L17Levels.L02
+msgid "The series `∑ k, 1 / ((k + 1) * (k + 2))` converges."
+msgstr ""
+
 #: Game.Levels.L10Levels.L06_Prod
 msgid "If sequences `a b : ℕ → ℝ` converge with `a` going to `L ≠ 0` and `b` going to `M ≠ 0`, then `a n * b n` converges to `L * M`."
 msgstr ""
@@ -2806,6 +2783,17 @@ msgstr ""
 
 #: Game.Levels.L6Levels.L02_LeftRight
 msgid "Left and Right"
+msgstr ""
+
+#: Game.Levels.L17Levels.L03
+msgid "# Level 3: Series Order Theorem\n"
+"\n"
+"If `a n ≤ b n` for all `n`, then the same\n"
+"holds for their partial sums."
+msgstr ""
+
+#: Game.Levels.L16Pset.L16Pset1
+msgid "# Problem 1: Finite geometric series"
 msgstr ""
 
 #: Game.Levels.L16Levels.L01_check
@@ -3274,6 +3262,27 @@ msgstr ""
 msgid "SeqInvLim"
 msgstr ""
 
+#: Game.Levels.L17Levels.L04
+msgid "# Level 4: The Basel Problem\n"
+"\n"
+"Near the turn of the 18th century, the Bernoulli brothers,\n"
+"Johann and Jakob, became obsessed with trying to evaluate (one plus) the series\n"
+"\n"
+"`∑ k, 1 / ((k + 2) ^ 2) = 1/4 + 1/9 + 1/16 + 1/25 +...`.\n"
+"\n"
+"It would take a few more decades, and their most famous\n"
+"pupil, Leonhard Euler, to solve it.\n"
+"\n"
+"For now, let's just prove that it converges.\n"
+"\n"
+"\n"
+"## New Theorem: `SeqConvOfMonotoneBdd`\n"
+"\n"
+"`(a : ℕ → ℝ) (M : ℝ) (hM : ∀ n, a n ≤ M) (ha : Monotone a) : SeqConv a`\n"
+"\n"
+"We already know the theorem `IsCauchyOfMonotoneBdd`, which states that a monotone bounded sequence is Cauchy; and by completeness, it thus converges in the reals."
+msgstr ""
+
 #: Game.Levels.L3Levels.L02_OneOverN
 msgid "The `field_simp` tactic tries to clear denominators, if it can figure out that the denominators are non-zero (or in the case of inequalities, positive)."
 msgstr ""
@@ -3593,6 +3602,10 @@ msgid "# Level 4: Dot Notation - Accessing Parts of Complex Information\n"
 "`h.2` gives `Q ∧ R`. That's because there are hidden parentheses: `P ∧ Q ∧ R = P ∧ (Q ∧ R)`. So how do you get to `Q` alone? Easy: dot notation! Writing `h.2.1` gives `Q`, and `h.2.2` gives `R`."
 msgstr ""
 
+#: Game.Levels.L16PsetIntro
+msgid "Pset 16"
+msgstr ""
+
 #: Game.Levels.L11Levels.L02_IsCauchyOfSum
 msgid "# Excellent work! Cauchy sequences are closed under addition!\n"
 "\n"
@@ -3843,6 +3856,14 @@ msgstr ""
 
 #: Game.Levels.L7Levels.L02_SeqOfAbs
 msgid "If `a : ℕ → ℝ` converges to `L`, and `b : ℕ → ℝ` is its absolute value, `b n = |a n|` for all `n`, then `b` converges to `|L|`."
+msgstr ""
+
+#: Game.Levels.L16Pset.L16Pset2
+msgid "# Problem 2: Prove that multiplying a series by a constant scales its sum accordingly."
+msgstr ""
+
+#: Game.Levels.L17Levels.L03
+msgid "If `a n ≤ b n`, then `∑ k, a n ≤ ∑ k, b n`."
 msgstr ""
 
 #: Game.Levels.L7Levels.L03_SeqInvLim
@@ -4136,6 +4157,13 @@ msgstr ""
 msgid "The `apply` tactic solves a goal when one of the hypotheses is the same as the goal. The syntax is `apply hypothesis_name`"
 msgstr ""
 
+#: Game.Levels.L16Levels.L01_check
+msgid "`(a : ℕ → ℝ) (L : ℝ) : Prop := SeqLim (Series a) L`\n"
+"\n"
+"If a sequence `a : N → ℝ` converges to `L`,\n"
+"we say that `SeriesLim a L` holds."
+msgstr ""
+
 #: Game.Levels.L6Pset.L6Pset5
 msgid "Done. (Hopefully you didn't do that by hand, but rather quoted -- twice -- a theorem that we recently proved?)"
 msgstr ""
@@ -4196,6 +4224,10 @@ msgid "## What You've Accomplished\n"
 "You've mastered a proof technique that appears throughout analysis: assume pathological behavior exists, extract witnesses using choice principles, iterate to amplify the pathology until it contradicts known constraints. This pattern - *local pathology + iteration + contradiction* - is one of the most powerful tools in real analysis.\n"
 "\n"
 "The orbit construction from Level 1, the contradiction framework from Level 2, and the inductive gap accumulation from Level 3 will serve you well in advanced mathematics."
+msgstr ""
+
+#: Game.Levels.L17Levels.L04
+msgid "If `a : ℕ → ℝ` is Monotone and bounded, then `SeqConv a`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L04_ring_nf
@@ -4382,6 +4414,18 @@ msgid "## What You've Accomplished\n"
 "The orbit method you've mastered here demonstrates a powerful principle: iteration can transform local properties (like `n < σ n`) into global structure (like strict monotonicity). This pattern appears throughout analysis, where local behavior accumulates into global phenomena."
 msgstr ""
 
+#: Game.Levels.L17Levels.L02
+msgid "# Level 2: Leibniz Series\n"
+"\n"
+"Now evaluate the infinite sum\n"
+"\n"
+"`∑ k, 1 / ((k + 1) * (k + 2)) = 1 / 2 + 1/6 + 1/12 + 1/20 + 1/30 +...`."
+msgstr ""
+
+#: Game.Levels.L17Lecture
+msgid "Lecture 17: Series II"
+msgstr ""
+
 #: Game.Levels.L3Levels.L02_OneOverN
 msgid "First Real Limit"
 msgstr ""
@@ -4411,6 +4455,7 @@ msgstr ""
 #: Game.Levels.L10Pset.L10Pset6
 #: Game.Levels.L10Pset.L10Pset7
 #: Game.Levels.L11Pset.L11Pset1
+#: Game.Levels.L15Pset.L15Pset1
 msgid "Done."
 msgstr ""
 
@@ -4496,6 +4541,28 @@ msgid "# Problem 4\n"
 "`have factName : |X| = X := by apply abs_of_nonneg h`."
 msgstr ""
 
+#: Game.Levels.L16PsetIntro
+msgid "# Problem Set 16: Solve these problems in Natural Language:\n"
+"\n"
+"$\\# 1)$ Let `0 < x < 1`. Prove that the sequence `n ↦ x ^ n` converges to `0` as `n` tends to infinity. [Hint: First prove that the sequence is `Antitone` and bounded from below; therefore it converges to some limit `L`. Notice that the sequence `n ↦ x ^ (2 * n)` is a subsequence of the original, and hence converges to the same limit. On the other hand, `x ^ (2 * n) = (x ^ n) ^ 2`, so this subsequence converges to `L ^ 2`...]\n"
+"\n"
+"$\\# 2)$ You will prove formally that the finite geometric series satisfies the formula:\n"
+"\n"
+"`(1 - x) * ∑ k ∈ range n, x ^ k = 1 - x ^ n`.\n"
+"\n"
+"Assume that `0 < x < 1` and use this to prove that the infinite geometric series\n"
+"\n"
+"`∑ k, x ^ k`\n"
+"\n"
+"converges to `1 / (1 - x)`.\n"
+"\n"
+"$\\# 3)$ Find an explicit formula for the sequence of partial sums of the series\n"
+"\n"
+"`∑ k, log ((k + 1) / k)`\n"
+"\n"
+"and determine whether the series converges or diverges."
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory.L04_ring_nf
 msgid "The `ring_nf` tactic puts both sides of an equation into a standard algebraic form and checks if they're equal."
 msgstr ""
@@ -4527,6 +4594,10 @@ msgstr ""
 
 #: Game.Levels.L6Lecture
 msgid "Lecture 6: Algebraic Limit Theorem, Part II"
+msgstr ""
+
+#: Game.Levels.L16Pset.L16Pset3
+msgid "The partial sums of the series `∑ k, a k + b k` is equal to that of `∑ k, a k + ∑ k, b k`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L04_ring_nf
@@ -4883,8 +4954,14 @@ msgstr ""
 #: Game.Levels.L12Pset.L12Pset1
 #: Game.Levels.L12Pset.L12Pset2
 #: Game.Levels.L13Pset.L13Pset1
-#: Game.Levels.L15Pset.L15Pset1
 #: Game.Levels.L16Levels.L01_check
+#: Game.Levels.L16Pset.L16Pset1
+#: Game.Levels.L16Pset.L16Pset2
+#: Game.Levels.L16Pset.L16Pset3
+#: Game.Levels.L17Levels.L01
+#: Game.Levels.L17Levels.L02
+#: Game.Levels.L17Levels.L03
+#: Game.Levels.L17Levels.L04
 msgid ""
 msgstr ""
 
@@ -4904,6 +4981,10 @@ msgstr ""
 
 #: Game.Levels.L6Levels.L05_AbsLt
 msgid "This says that `|x| < y` if and only if `-y < x ∧ x < y`."
+msgstr ""
+
+#: Game.Levels.L17Lecture
+msgid "# Lecture 17: Series II"
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L09_big_boss
@@ -5154,6 +5235,7 @@ msgstr ""
 #: Game.Levels.L8Pset.L8Pset3
 #: Game.Levels.L9Pset.L9Pset3
 #: Game.Levels.L10Pset.L10Pset4
+#: Game.Levels.L16Pset.L16Pset3
 msgid "Problem 3"
 msgstr ""
 
@@ -5186,8 +5268,17 @@ msgstr ""
 msgid "`1 + 2 + ... + N = N * (N + 1) / 2`."
 msgstr ""
 
+#: Game.Levels.L16Pset.L16Pset1
+msgid "For any real `x` and natural number `n`,\n"
+"`(1-x)*(1+...+x^(n-1)) = 1- x^n`."
+msgstr ""
+
 #: Game.Levels.L3Levels.L01_ArchProp
 msgid "The `push_cast` tactic handles coercions between number types, particularly useful when working with natural numbers that need to be treated as real numbers (or integers, or rationals)."
+msgstr ""
+
+#: Game.Levels.L17Levels.L03
+msgid "Series Order Theorem"
 msgstr ""
 
 #: Game.Levels.L6Levels.L02_LeftRight
@@ -5255,6 +5346,61 @@ msgstr ""
 
 #: Game.Levels.L6Levels.L03_DotNotation
 msgid "Dot Notation"
+msgstr ""
+
+#: Game.Levels.L1Pset.L1Pset2
+msgid "# Problem 2\n"
+"\n"
+"In this problem you are asked to show that there is some `c` so that `(x + y) ^ 2 = c`, given that\n"
+"`x * y = 1` and `x ^ 2 + y ^ 2 = 2`.\n"
+"\n"
+"You will likely have a hard time solving this problem as is.\n"
+"You surely can work out what value of\n"
+"`c` you need. But if you try\n"
+"`ring_nf`, you won't have control over\n"
+"how the \"normal form\" chooses to\n"
+"express things. In fact, the\n"
+"left-hand side, `(x + y) ^ 2` will\n"
+"turn into `x * y * 2 + x ^ 2 + y ^ 2`,\n"
+"which is parsed in this order:\n"
+"\n"
+"`(((x * y) * 2) + x ^ 2) + y ^ 2`\n"
+"\n"
+"This means that you *will* be able to\n"
+"`rewrite [h2]` successfully,\n"
+"but then you will *not* be able to rewrite by `h1`, because the (invisible) parentheses  go the wrong way. (Hint: If you want to know how things are grouped but don't see parentheses, you can hover your cursor over the text in the Goal State, and Lean will show you the groupings. Try it!)\n"
+"\n"
+"Now, in natural language, there are times when you might want to\n"
+"record an auxiliary fact: \"let's\n"
+"*have* the fact that such and such ...\". The Lean\n"
+"syntax for this is as follows:\n"
+"\n"
+"`have NewFactName (Assumptions) : Conclusion := by Proof`\n"
+"\n"
+"That is, you first write `have`; then give\n"
+"the new hypothesis a name; then include any\n"
+"assumptions, like `(x : ℝ)`, meaning, `x`\n"
+"is a real number, etc (the symbol `ℝ` is written with a backslash, then capital `R`, then space); then you put a colon,\n"
+"and then state the conclusion; then you\n"
+"put a colon-equals and the word `by`; and finally you give the proof.\n"
+"\n"
+"For example, if you wanted to declare\n"
+"the new fact that, say, for any real `u` and `v`,\n"
+"\n"
+"`(u + v) ^ 2 = (u ^ 2 + v ^ 2) + 2 * (u * v)`\n"
+"\n"
+"and you wanted to call this fact `huv` (a hypothesis on `u` and `v`),\n"
+"and you wanted to prove this fact by\n"
+"invoking the ring normal form tactic,\n"
+" then you would give Lean the command:\n"
+"\n"
+"`have huv (u v : ℝ) : (u ^ 2 + v ^ 2) + 2 * (u * v) := by ring_nf`\n"
+"\n"
+"This will add to your list of hypotheses\n"
+"the fact: `huv : ∀ (u v : ℝ), (u ^ 2 + v ^ 2) + 2 * (u * v)`.\n"
+"\n"
+"Something like this (if not exactly this)\n"
+"will be useful to you in solving this problem."
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset3
@@ -5405,6 +5551,10 @@ msgstr ""
 
 #: Game.Levels.L9Levels.L04_FiniteSums
 msgid "If a function is nonnegative, then its sum is also."
+msgstr ""
+
+#: Game.Levels.L16Pset.L16Pset3
+msgid "# Problem 3: Prove that the sum of two series is the series of the sum."
 msgstr ""
 
 #: Game.Levels.L5Levels.L01_DoubleSeqConv
@@ -6034,6 +6184,7 @@ msgstr ""
 #: Game.Levels.L12Pset.L12Pset1
 #: Game.Levels.L13Pset.L13Pset1
 #: Game.Levels.L15Pset.L15Pset1
+#: Game.Levels.L16Pset.L16Pset1
 msgid "Problem 1"
 msgstr ""
 

@@ -29,6 +29,14 @@ DefinitionDoc Series as "Series"
 
 def Series (a : ℕ → ℝ) : ℕ → ℝ := fun n ↦ ∑ k ∈ range n, a k
 
+/-- `(a : ℕ → ℝ) (L : ℝ) : Prop := SeqLim (Series a) L`
+
+If a sequence `a : N → ℝ` converges to `L`,
+we say that `SeriesLim a L` holds. -/
+DefinitionDoc SeriesLim as "SeriesLim"
+
+def SeriesLim (a : ℕ → ℝ) (L : ℝ) : Prop := SeqLim (Series a) L
+
 /-- `(a : ℕ → ℝ) : Prop := SeqConv (Series a)`
 
 The Series of a sequence `a : N → ℝ` converges if the sequence of its partial sums converges. -/
@@ -36,7 +44,7 @@ DefinitionDoc SeriesConv as "SeriesConv"
 
 def SeriesConv (a : ℕ → ℝ) : Prop := SeqConv (Series a)
 
-NewDefinition Series SeriesConv
+NewDefinition Series SeriesConv SeriesLim
 
 /-- If a series converges, then the terms go to zero
 -/
