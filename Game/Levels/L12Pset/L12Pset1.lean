@@ -39,7 +39,7 @@ theorem MonotoneNeg_of_Antitone {X : Type*} [LinearOrder X] [AddCommGroup X] [Is
 fun i j hij ↦ neg_le_neg (ha hij)
 
 /-- If `a` is `Antitone`, then `-a` is `Monotone`. -/
-TheoremDoc MonotoneNeg_of_Antitone as "MonotoneNeg_of_Antitone" in "Theorems"
+TheoremDoc MonotoneNeg_of_Antitone as "MonotoneNeg_of_Antitone" in "Sequences"
 
 theorem IsCauchyNeg {X : Type*} [NormedField X] [Lattice X]
 (a : ℕ → X) (ha : IsCauchy a) : IsCauchy (-a) := by
@@ -53,7 +53,7 @@ rewrite [show |-(a m - a n)| = |(a m - a n)| by apply abs_neg]
 apply hN n hn m hm
 
 /-- If `a` satisfies `IsCauchy`, then `-a` does too. -/
-TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Theorems"
+TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Sequences"
 
 
 NewTheorem MonotoneNeg_of_Antitone IsCauchyNeg

@@ -15,7 +15,7 @@ Prove the Theorem `LimZeroTimesBdd`: if a sequence `a n` converges to `0`, and t
 /--
 If sequence `a : ℕ → ℝ` converges to `0` and sequence `b : ℕ → ℝ` is bounded, then `a n * b n` converges to `0`.
 -/
-TheoremDoc LimZeroTimesBdd as "LimZeroTimesBdd" in "Theorems"
+TheoremDoc LimZeroTimesBdd as "LimZeroTimesBdd" in "Sequences"
 
 /-- Prove this
 -/

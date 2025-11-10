@@ -58,7 +58,7 @@ TheoremDoc abs_Lipschitz as "abs_Lipschitz" in "Theorems"
 NewTheorem abs_Lipschitz
 
 /-- If `a : ℕ → ℝ` converges to `L`, and `b : ℕ → ℝ` is its absolute value, `b n = |a n|` for all `n`, then `b` converges to `|L|`. -/
-TheoremDoc AbsLim as "AbsLim" in "Theorems"
+TheoremDoc AbsLim as "AbsLim" in "Sequences"
 
 /-- Prove this
 -/

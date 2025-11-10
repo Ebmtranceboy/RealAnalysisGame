@@ -12,7 +12,7 @@ Suppose that a sequence `a : ℕ → ℝ` converges to `L ≠ 0`. Show that even
 "
 
 /-- If `a : ℕ → ℝ` converges to `L` and `L ≠ 0`, then `|a n|` is eventually bounded by `2 * |L|`. -/
-TheoremDoc EventuallyBdd_of_SeqConv as "EventuallyBdd_of_SeqConv" in "Theorems"
+TheoremDoc EventuallyBdd_of_SeqConv as "EventuallyBdd_of_SeqConv" in "Sequences"
 
 /-- Prove the statement. -/
 Statement EventuallyBdd_of_SeqConv (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) (hL : L ≠ 0) :

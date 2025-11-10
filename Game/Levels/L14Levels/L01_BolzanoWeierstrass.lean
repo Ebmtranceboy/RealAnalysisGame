@@ -115,7 +115,7 @@ TheoremDoc abs_le as "abs_le" in "Theorems"
 /--
 If a sequence `a : ℕ → X` (where `X` can be `ℚ` or `ℝ`) is antitone and bounded, then it is Cauchy.
 -/
-TheoremDoc IsCauchyOfAntitoneBdd as "IsCauchyOfAntitoneBdd" in "Theorems"
+TheoremDoc IsCauchyOfAntitoneBdd as "IsCauchyOfAntitoneBdd" in "Sequences"
 
 Statement IsCauchyOfAntitoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X] (a : ℕ → X) (M : X) (hM : ∀ n, M ≤ a n) (ha : Antitone a)
     : IsCauchy a := by
@@ -131,7 +131,7 @@ apply negbCauchy
 /--
 If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) has unbounded peaks, then it has an `Antitone` subsequence.
 -/
-TheoremDoc AntitoneSubseq_of_UnBddPeaks as "AntitoneSubseq_of_UnBddPeaks" in "Theorems"
+TheoremDoc AntitoneSubseq_of_UnBddPeaks as "AntitoneSubseq_of_UnBddPeaks" in "Sequences"
 
 theorem AntitoneSubseq_of_UnBddPeaks
 {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X] (a : ℕ → X) (ha : UnBddPeaks a) : ∃ σ, Subseq σ ∧ Antitone (a ∘ σ) := by
@@ -157,7 +157,7 @@ NewTheorem AntitoneSubseq_of_UnBddPeaks IsCauchyOfAntitoneBdd abs_le
 /--
 If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is bounded, then it has a subsequence which is Cauchy.
 -/
-TheoremDoc BolzanoWeierstrass as "BolzanoWeierstrass" in "Theorems"
+TheoremDoc BolzanoWeierstrass as "BolzanoWeierstrass" in "Sequences"
 
 /-- Prove this
 -/

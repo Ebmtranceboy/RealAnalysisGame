@@ -74,7 +74,7 @@ def Subseq (σ : ℕ → ℕ) : Prop :=
 /--
 If a sequence `a` converges to `L` and `σ` is a subsequence, then `a ∘ σ` also converges to `L`.
 -/
-TheoremDoc SubseqConv as "SubseqConv" in "Theorems"
+TheoremDoc SubseqConv as "SubseqConv" in "Sequences"
 
 /-- Prove this
 -/

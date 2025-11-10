@@ -60,7 +60,7 @@ def IsCauchy {X : Type*} [NormedAddGroup X] [Lattice X] (a : ℕ → X) : Prop :
 /--
 If a sequence `a : ℕ → ℝ` converges, then it is Cauchy.
 -/
-TheoremDoc IsCauchyOfSeqConv as "IsCauchyOfSeqConv" in "Theorems"
+TheoremDoc IsCauchyOfSeqConv as "IsCauchyOfSeqConv" in "Sequences"
 
 /-- Prove this
 -/

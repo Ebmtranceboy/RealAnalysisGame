@@ -67,7 +67,7 @@ def SeqBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (
 
 /-- If `a : ℕ → ℝ` is a sequence which converges to a non-zero limit, then it is bounded.
 See also `BddOfConv` which assumes nothing about the limit. -/
-TheoremDoc BddOfConvNonzero as "BddOfConvNonzero" in "Theorems"
+TheoremDoc BddOfConvNonzero as "BddOfConvNonzero" in "Sequences"
 
 /-- Prove this
 -/
