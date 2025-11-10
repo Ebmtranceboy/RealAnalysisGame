@@ -20,7 +20,7 @@ TheoremDoc LeibnizSeries as "LeibnizSeries" in "Theorems"
 
 Statement LeibnizSeries (a : ℕ → ℝ) (ha : ∀ n, a n = 1 / ((n + 1) * (n + 2))) : SeriesConv a := by
 have f : ∀ n, ∑ k ∈ range n, a k = 1 - 1 / (n + 1) := by
-  apply LeibnizSeries' a ha
+  apply LeibnizSeries' ha
 use 1
 intro ε hε
 choose N hN using ArchProp hε

@@ -47,7 +47,7 @@ have hab : ∀ n, a n ≤ b n := by
   field_simp
   bound
 intro n
-have bLeib := LeibnizSeries' b hb n
+have bLeib := LeibnizSeries' hb n
 have habBnd := SeriesOrderThm a b hab n
 change Series b n = 1 - 1 / (n + 1) at bLeib
 have h1 : (1 : ℝ) - 1 / (n + 1) ≤ 1 := by

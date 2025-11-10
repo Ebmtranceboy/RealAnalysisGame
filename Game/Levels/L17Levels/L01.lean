@@ -19,7 +19,8 @@ First let's evaluate the partial sums explicitly.
 -/
 TheoremDoc LeibnizSeries' as "LeibnizSeries'" in "Theorems"
 
-Statement LeibnizSeries' (a : ℕ → ℝ) (ha : ∀ n, a n = 1 / ((n + 1) * (n + 2))) : ∀ n, ∑ k ∈ range n, a k = 1 - 1 / (n + 1) := by
+Statement LeibnizSeries' {a : ℕ → ℝ} (ha : ∀ n, a n = 1 / ((n + 1) * (n + 2))) :
+∀ n, ∑ k ∈ range n, a k = 1 - 1 / (n + 1) := by
   intro n
   induction' n with m hm
   bound

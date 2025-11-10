@@ -54,7 +54,7 @@ TheoremDoc LimZero_of_SeriesConv as "LimZero_of_SeriesConv" in "Theorems"
 Statement LimZero_of_SeriesConv (a : ℕ → ℝ) (ha : SeriesConv a) : SeqLim a 0 := by
 intro ε hε
 change SeqConv (Series a) at ha
-have cau : IsCauchy (Series a) := by apply IsCauchyOfLim (Series a) ha
+have cau : IsCauchy (Series a) := by apply IsCauchyOfSeqConv ha
 choose N hN using cau ε hε
 use N
 intro n hn

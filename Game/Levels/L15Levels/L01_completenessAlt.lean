@@ -99,8 +99,6 @@ sequence of reals converges to the real represented by `y`.
 
 def SeqDiffBy (q : ℕ → ℚ) (r : ℕ → ℚ) (ε : ℚ) : Prop := ∃ M, ∀ i ≥ M, |q i - r i| < ε
 
-
-
 Statement (q : ℕ → ℕ → ℚ) (hq : ∀ n, IsCauchy (q n))
   (hx : ∀ ε > 0, ∃ N, ∀ n ≥ N, ∀ m ≥ n, SeqDiffBy (q m) (q n) ε) :
   ∃ (y : ℕ → ℚ), (IsCauchy y) ∧
@@ -109,6 +107,10 @@ Statement (q : ℕ → ℕ → ℚ) (hq : ∀ n, IsCauchy (q n))
 choose N hN using fun n ↦ hq n (1 / (n + 1)) (by bound)
 let N' := fun n ↦ ∑ k ∈ range n, N k
 have N'mono : Monotone N' := by sorry
+have N'bnd : ∀ m, N m ≤ N' m := by sorry
+have N'bnd' : ∀ m, ∀ n ≤ m, N n ≤ N' m := by
+  intro m n hn
+  linarith [N'bnd n, N'mono hn]
 let y := fun n ↦ q n (N' n)
 use y
 split_ands
@@ -118,10 +120,12 @@ choose N2 hN2 using ArchProp (show (0 : ℝ) < ε / 2 by norm_num; bound)
 use N1 + N2
 intro n hn m hm
 change |q m (N' m) - q n (N' n)| < ε
-have f1 : |q m (N' m) - q n (N' n)| = |(q m (N' m) -  q m (N' n)) + (q m (N' n) - q n (N' n))| := by ring_nf
-have f2 : |(q m (N' m) -  q m (N' n)) + (q m (N' n) - q n (N' n))| ≤
-  |q m (N' m) -  q m (N' n)| + |q m (N' n) - q n (N' n)| := by apply abs_add
-
+have f1 : |q m (N' m) - q n (N' n)| = |(q m (N' m) -  q n (N' m)) + (q n (N' m) - q n (N' n))| := by ring_nf
+have f2 : |(q m (N' m) -  q n (N' m)) + (q n (N' m) - q n (N' n))| ≤
+  |(q m (N' m) -  q n (N' m))| + |(q n (N' m) - q n (N' n))| := by apply abs_add
+have := (N'bnd' m n hm)
+have := hN1
+--have := hN m (N' m) (N'bnd m) (N' n) (by apply N'mono hm)
 
 
 
