@@ -38,11 +38,16 @@ So the partial sums of the Basel series are **bounded above by 1**!
 
 Since we're adding positive terms, the partial sums form a **monotone increasing** sequence. Combined with being bounded above, this guarantees convergence!
 
-**New Theorem (SeqConvOfMonotoneBdd):** If a sequence `a : ℕ → ℝ` is:
+**New Theorem (`SeqConvOfMonotoneBdd`):** If a sequence `a : ℕ → ℝ` is:
 - **Monotone:** `a n ≤ a (n+1)` for all `n`
 - **Bounded:** `a n ≤ M` for all `n` and some `M`
 
 Then `SeqConv a` holds—the sequence converges!
+
+**New Theorem (`SeqConv_of_IsCauchy`):** The completeness of `ℝ` (which we proved).
+If a sequence of **real** numbers is Cauchy, then it converges. (This is true for a *different* reason
+than for sequences of rationals! For rationals, it's true by the *definition* (/ construction) of `ℝ`; for the reals,
+it's a theorem.)
 
 **Why?** We already proved that monotone bounded sequences are Cauchy (`IsCauchyOfMonotoneBdd`). By the **completeness of ℝ**, every Cauchy sequence converges (`Conv_of_IsCauchy`). Combining these gives the result!
 
@@ -65,16 +70,25 @@ Prove that the Basel series converges by:
 This is a substantial proof—you're standing on the shoulders of giants!
 "
 
+
+theorem SeqConv_of_IsCauchy {a : ℕ → ℝ} (ha : IsCauchy a) : SeqConv a := by
+-- in Mathlib -- `ℝ` version of `Conv_of_IsCauchy`...
+  sorry
+
+/--
+If a sequence `a : ℕ → ℝ` is Cauchy, then it converges.
+-/
+TheoremDoc SeqConv_of_IsCauchy as "SeqConv_of_IsCauchy" in "Sequences"
+
+
 /-- If `a : ℕ → ℝ` is Monotone and bounded, then `SeqConv a`.
 -/
 TheoremDoc SeqConvOfMonotoneBdd as "SeqConvOfMonotoneBdd" in "Series"
 
-
 theorem SeqConvOfMonotoneBdd (a : ℕ → ℝ) (M : ℝ) (hM : ∀ n, a n ≤ M) (ha : Monotone a) : SeqConv a := by
-have := IsCauchyOfMonotoneBdd a M hM ha
-sorry
+apply SeqConv_of_IsCauchy (IsCauchyOfMonotoneBdd ha hM)
 
-NewTheorem SeqConvOfMonotoneBdd
+NewTheorem SeqConvOfMonotoneBdd SeqConv_of_IsCauchy
 
 Statement (a : ℕ → ℝ) (ha : ∀ n, a n = 1 / ((n + 2) ^ 2)) : SeriesConv a := by
 apply SeqConvOfMonotoneBdd (Series a) 1

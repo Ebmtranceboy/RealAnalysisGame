@@ -108,8 +108,9 @@ TheoremDoc IsCauchyOfMonotoneBdd as "IsCauchyOfMonotoneBdd" in "Sequences"
 
 /-- Prove this
 -/
-Statement IsCauchyOfMonotoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X] (a : ℕ → X) (M : X) (hM : ∀ n, a n ≤ M) (ha : Monotone a)
-    : IsCauchy a := by
+Statement IsCauchyOfMonotoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X]
+  [FloorSemiring X] {a : ℕ → X} {M : X} (ha : Monotone a) (hM : ∀ n, a n ≤ M)
+  : IsCauchy a := by
 intro ε hε
 by_contra h
 push_neg at h

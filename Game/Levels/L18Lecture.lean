@@ -11,7 +11,7 @@ Introduction r"
 
 **SIMPLICIO:** Does rearranging the terms of a series change its sum?
 
-**SOCRATES:** Great question! Here's the way I like to illustrate this idea. Imagine a massive
+**SOCRATES:** Great question! Here's the way I like to illustrate this idea (that I learned from Walter Rudin's books). Imagine a massive
 matrix, $M$, infinite in both directions, to the right, and down. It is upper triangular, has $-1$s on the diagonal, and at
 position $(i, j)$ for $i < j$ its entry is $1/ 2 ^ {(j - i + 1)}$. So $M$ looks like this:
 
@@ -54,6 +54,10 @@ $-1 - 1/2 - 1/4 - 1/8 - \cdots = -2$.
 Uh oh. So what *is* the sum?
 
 **SOCRATES:** Well that's just it! There is *no* 'the sum', because it depends on in what order you add the terms up!
+
+Infinite summation is not commutative!
+
+A *lot* of analysis is devoted to the study of this problem.
 A sequence is called 'conditionally convergent' if it converges, but not when you add absolute values.
 That is, the matrix $|M|$ would look like this:
 
