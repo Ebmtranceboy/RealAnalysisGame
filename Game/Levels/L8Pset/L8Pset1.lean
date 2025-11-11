@@ -9,7 +9,7 @@ Introduction "# Problem 1
 "
 
 /-- For all `n : ℕ`, `2 * n + 9 ≤ 2 ^ (n + 4)`. -/
-TheoremDoc Pset8Ex1 as "Pset8Ex1" in "Theorems"
+TheoremDoc Pset8Ex1 as "Pset8Ex1" in "Temporary"
 
 /-- Prove the statement. -/
 Statement Pset8Ex1 (n : ℕ) : 2 * n + 9 ≤ 2 ^ (n + 4) := by

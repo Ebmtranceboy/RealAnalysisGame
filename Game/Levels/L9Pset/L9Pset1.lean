@@ -15,7 +15,7 @@ do you do in the other case?)
 "
 
 /-- If `a : ℕ → ℝ` is a sequence which converges, then it is bounded. -/
-TheoremDoc BddOfConv as "BddOfConv" in "Theorems"
+TheoremDoc BddOfConv as "BddOfConv" in "Sequences"
 
 /-- Prove the statement. -/
 Statement BddOfConv (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) :

@@ -60,7 +60,7 @@ TheoremDoc abs_pos_of_nonzero as "abs_pos_of_nonzero" in "Theorems"
 NewTheorem abs_pos_of_nonzero
 
 /-- If `a : ℕ → ℝ` converges to `L` and `M`, then `L = M`. -/
-TheoremDoc LimUnique as "LimUnique" in "Theorems"
+TheoremDoc LimUnique as "LimUnique" in "Sequences"
 
 /-- Prove that limits are unique.
 -/

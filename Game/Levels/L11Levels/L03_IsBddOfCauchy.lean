@@ -45,7 +45,7 @@ Good luck!
 /--
 If a sequence `a` is Cauchy, then it is eventually bounded.
 -/
-TheoremDoc IsBddOfCauchy as "IsBddOfCauchy" in "Theorems"
+TheoremDoc IsBddOfCauchy as "IsBddOfCauchy" in "Sequences"
 
 /-- Prove this
 -/

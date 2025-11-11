@@ -39,7 +39,7 @@ theorem MonotoneNeg_of_Antitone {X : Type*} [LinearOrder X] [AddCommGroup X] [Is
 fun i j hij ↦ neg_le_neg (ha hij)
 
 /-- If `a` is `Antitone`, then `-a` is `Monotone`. -/
-TheoremDoc MonotoneNeg_of_Antitone as "MonotoneNeg_of_Antitone" in "Theorems"
+TheoremDoc MonotoneNeg_of_Antitone as "MonotoneNeg_of_Antitone" in "Sequences"
 
 theorem IsCauchyNeg {X : Type*} [NormedField X] [Lattice X]
 (a : ℕ → X) (ha : IsCauchy a) : IsCauchy (-a) := by
@@ -53,7 +53,7 @@ rewrite [show |-(a m - a n)| = |(a m - a n)| by apply abs_neg]
 apply hN n hn m hm
 
 /-- If `a` satisfies `IsCauchy`, then `-a` does too. -/
-TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Theorems"
+TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Sequences"
 
 
 NewTheorem MonotoneNeg_of_Antitone IsCauchyNeg
@@ -61,12 +61,13 @@ NewTheorem MonotoneNeg_of_Antitone IsCauchyNeg
 
 /-- Prove `IsCauchyOfAntitoneBdd`
 -/
-Statement  {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X] (a : ℕ → X) (M : X) (hM : ∀ n, M ≤ a n) (ha : Antitone a)
+Statement  {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X]
+    {a : ℕ → X} {M : X} (ha : Antitone a) (hM : ∀ n, M ≤ a n)
     : IsCauchy a := by
 let b := -a
 have hb : Monotone b := by apply MonotoneNeg_of_Antitone a ha
 have b_bdd : ∀ n, b n ≤ -M := by intro n; change -a n ≤ - M; linarith [hM n]
-have bCauchy : IsCauchy b := IsCauchyOfMonotoneBdd b (-M) b_bdd hb
+have bCauchy : IsCauchy b := IsCauchyOfMonotoneBdd hb b_bdd
 have negbCauchy : IsCauchy (-b) := IsCauchyNeg b bCauchy
 change IsCauchy (- -a) at negbCauchy
 rewrite [show - - a = a by ring_nf] at negbCauchy

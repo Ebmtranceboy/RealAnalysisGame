@@ -60,11 +60,11 @@ def IsCauchy {X : Type*} [NormedAddGroup X] [Lattice X] (a : ℕ → X) : Prop :
 /--
 If a sequence `a : ℕ → ℝ` converges, then it is Cauchy.
 -/
-TheoremDoc IsCauchyOfLim as "IsCauchyOfLim" in "Theorems"
+TheoremDoc IsCauchyOfSeqConv as "IsCauchyOfSeqConv" in "Sequences"
 
 /-- Prove this
 -/
-Statement IsCauchyOfLim (a : ℕ → ℝ) (ha : SeqConv a)
+Statement IsCauchyOfSeqConv {a : ℕ → ℝ} (ha : SeqConv a)
     : IsCauchy a := by
 choose L hL using ha
 intro ε hε
