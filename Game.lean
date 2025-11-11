@@ -29,6 +29,9 @@ import Game.Levels.L15PsetIntro
 import Game.Levels.L16Lecture
 import Game.Levels.L16PsetIntro
 import Game.Levels.L17Lecture
+import Game.Levels.L17PsetIntro
+import Game.Levels.L18Lecture
+
 
 -- exercise for later : why not `|a n - a (n + 1)|`?
 
@@ -79,6 +82,12 @@ Dependency Lecture16 → L16Pset
 Dependency Lecture16 → Lecture17
 
 Dependency L15Pset → Lecture17
+
+Dependency Lecture17 → L17Pset
+
+Dependency Lecture17 → Lecture18
+
+Dependency L16Pset → Lecture18
 
 
 -- Here's what we'll put on the title screen

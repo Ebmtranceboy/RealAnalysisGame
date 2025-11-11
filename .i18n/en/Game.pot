@@ -102,6 +102,10 @@ msgid "# Congratulations! You've proven that convergence implies Cauchy!\n"
 "Onward to the next level!"
 msgstr ""
 
+#: Game.Levels.L18Lecture
+msgid "Lecture 18: Rearrangements"
+msgstr ""
+
 #: Game.Levels.L4Levels.L01_NonConverge
 msgid "`(a : ℕ → ℝ) := ∃ L, SeqLim a L`\n"
 "\n"
@@ -207,6 +211,10 @@ msgid "# Problem 2\n"
 "\n"
 "Suppose that sequences `a b : ℕ → ℝ` converge to `L` and `M`, resp, with `L < M`. Show that\n"
 "eventually, `a n < b n`."
+msgstr ""
+
+#: Game.Levels.L17PsetIntro
+msgid "Pset 17"
 msgstr ""
 
 #: Game.Levels.L3Pset.L3Pset2
@@ -323,6 +331,10 @@ msgstr ""
 
 #: Game.Levels.L10Pset.L10Pset7
 msgid "If a sequence `a : ℕ → ℝ` has two convergent subsequences, `a ∘ σ` converges to `L` and `a ∘ τ` converges to `M ≠ L`, then `a` is not convergent."
+msgstr ""
+
+#: Game.Levels.L17Pset.L05
+msgid "Monotonicity of Series"
 msgstr ""
 
 #: Game.Levels.L12Levels.L01_Choose
@@ -483,6 +495,14 @@ msgid "# Lecture 11: The Real Numbers I\n"
 "with this definition and what it can do.\n"
 "\n"
 "**SIMPLICIO:** I like it; let's go!"
+msgstr ""
+
+#: Game.Levels.L17Pset.L05'
+msgid "# Level 2: Monotone Limit Bound\n"
+"\n"
+"Prove the theorem `MonotoneLimitBound`:\n"
+"Suppose that a sequence `a : ℕ → ℝ` is `Monotone` and has limit `L`. Then\n"
+"for every `n`, `a n ≤ L`."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L03_rw
@@ -1244,6 +1264,13 @@ msgstr ""
 
 #: Game.Levels.L3Lecture
 msgid "Lecture 3: More fun with Sequences"
+msgstr ""
+
+#: Game.Levels.L17Pset.L05
+msgid "# Level 1: Monotonicity of Series\n"
+"\n"
+"Prove `MonotoneOfNonNegSeries`:\n"
+"If `0 ≤ a n`, then `Series a` is Monotone."
 msgstr ""
 
 #: Game.Levels.L5Lecture
@@ -3869,6 +3896,10 @@ msgstr ""
 msgid "If `¬ (m ≤ n)`, then `n < m`."
 msgstr ""
 
+#: Game.Levels.L17Pset.L06
+msgid "If `0 ≤ a n ≤ b n` and `Series b` converges, then so does `Series a`."
+msgstr ""
+
 #: Game.Levels.L2NewtonsCalculationOfPi.L01_SeqConvDef
 msgid "Try starting with `change ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, |a n - L| < ε`"
 msgstr ""
@@ -3995,6 +4026,56 @@ msgstr ""
 
 #: Game.Levels.L13Pset.L13Pset1
 msgid "Prove `AntitoneSubseq_of_UnBddPeaks`"
+msgstr ""
+
+#: Game.Levels.L18Lecture
+msgid "# Lecture 18: Rearrangements\n"
+"\n"
+"**SIMPLICIO:** Does rearranging the terms of a series change its sum?\n"
+"\n"
+"**SOCRATES:** Great question! Here's the way I like to illustrate this question. Imagine a massive\n"
+"matrix, $M$, infinite in both directions. It is upper triangular, has $-1$s on the diagonal, and at\n"
+"position $(i, j)$ for $i < j$ its entry is $1/ 2 ^ {(j - i + 1)}$. So $M$ looks like this:\n"
+"\n"
+"$\n"
+"\\begin{pmatrix}\n"
+"-1 & 1/2 & 1/4 & 1/8 & 1/16 & \\cdots \\\\\n"
+"0 & -1 & 1/2 & 1/4 & 1/8 & \\cdots \\\\\n"
+"0 & 0 & -1 & 1/2 & 1/4 & \\cdots \\\\\n"
+"0 & 0 & 0 & -1 & 1/2 & \\cdots \\\\\n"
+"\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\ddots\n"
+"\\end{pmatrix}\n"
+"$\n"
+"\n"
+"What is the sum of the elements in $M$?\n"
+"\n"
+"**SIMPLICIO:** Ok let's see if we can work this out. Hmm this isn't so hard, I'll sum the rows, and\n"
+"then add those up.\n"
+"\n"
+"The first row sums to $-1 + 1/2 + 1/4 + 1/8 + \\cdots = 0$.\n"
+"\n"
+"The second row sum is $0 + -1 + 1/2 + 1/4 + \\cdots = 0$ as well.\n"
+"\n"
+"In fact, every row obviously sums to $0$. So the sum of all the elements in $M$ is $0$.\n"
+"\n"
+"**SOCRATES:** Very good. What will my next question be?\n"
+"\n"
+"**SIMPLICIO:** I bet you're going to ask me to sum the columns instead of the rows...?\n"
+"\n"
+"**SOCRATES:** You bet! :)\n"
+"\n"
+"**SIMPLICIO:** Alright, let's do that. The first column sums to $-1 + 0 + 0 + 0 + \\cdots = -1$.\n"
+"\n"
+"The second column sums to $1/2 + -1 + 0 + 0 + \\cdots = -1/2$.\n"
+"\n"
+"The third column sums to $1/4 + 1/2 + -1 + 0 + \\cdots = -1/4$.\n"
+"\n"
+"Ok, I see the pattern. The $n$th column sums to $-1 / 2^{n-1}$. So the sum of all the elements in $M$ is\n"
+"$-1 - 1/2 - 1/4 - 1/8 - \\cdots = -2$.\n"
+"\n"
+"Uh oh. So what *is* the sum?\n"
+"\n"
+"**SOCRATES:** Well that's just it! There is *no* 'sum', because it depends on in what order you add the terms up."
 msgstr ""
 
 #: Game.Levels.L12Levels.L00_SubseqIterate
@@ -4413,6 +4494,10 @@ msgid "Let's compare now to the purely natural language proof:\n"
 "- **The addition `⌈1 / ε⌉₊ + 1` happens in `ℕ`**, then gets cast to `ℝ` - this is why we need `push_cast`\n"
 "\n"
 "**Historical Note**: While often attributed to Archimedes (c. 287-212 BCE), this property was likely known to Eudoxus (c. 408-355 BCE) and appears in Euclid's *Elements*. Archimedes used a version of this principle in his method of exhaustion, particularly in calculating areas and volumes by approximating them with polygons of increasing numbers of sides."
+msgstr ""
+
+#: Game.Levels.L18Levels.L01
+msgid "Rearrangements"
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L00_the_problem
@@ -4879,6 +4964,10 @@ msgid "# Problem 4\n"
 "`have factName : |X| = X := by apply abs_of_nonneg h`."
 msgstr ""
 
+#: Game.Levels.L17Pset.L05'
+msgid "If `a : ℕ → ℝ` is `Monotone` and has limit `L`, then for all `n`, `a n ≤ L`."
+msgstr ""
+
 #: Game.Levels.L16PsetIntro
 msgid "# Problem Set 16: Solve these problems in Natural Language:\n"
 "\n"
@@ -5295,6 +5384,10 @@ msgstr ""
 #: Game.Levels.L16Pset.L16Pset1
 #: Game.Levels.L16Pset.L16Pset2
 #: Game.Levels.L16Pset.L16Pset3
+#: Game.Levels.L17Pset.L05
+#: Game.Levels.L17Pset.L05'
+#: Game.Levels.L17Pset.L06
+#: Game.Levels.L18Levels.L01
 msgid ""
 msgstr ""
 
@@ -5553,6 +5646,31 @@ msgid "Great! You've learned the `specialize` tactic.\n"
 "Last lesson in Lecture 1 coming up."
 msgstr ""
 
+#: Game.Levels.L17PsetIntro
+msgid "# Problem Set 17: Solve these problems in Natural Language:\n"
+"\n"
+"$\\# 1)$ True or false: If a sequence `a : ℕ → ℝ` is bounded, then the\n"
+"Cesaro-average sequence (see Problem Set 15, Problem 3) converges. Give a proof or a counterexample.\n"
+"\n"
+"$\\# 2)$\n"
+"Following Euler, work out the Taylor series for `sin(x)/x`, and show that it equals `1 - x²/3! + x⁴/5! - ...`.\n"
+"\n"
+"\n"
+"$\\# 3)$\n"
+"The next thing Euler did was totally crazy: he treated the sine function's infinite series like a polynomial, and factored it!\n"
+"He claimed that\n"
+"\n"
+"`sin(x)/x = (1 - x²/π²)(1 - x²/(4π²))(1 - x²/(9π²))...`\n"
+"\n"
+"holds (it would take a long while to make this rigorous, but it *can* be done). Assume that this identity holds.\n"
+"Compare the coefficient of `x²` in Problem 2 to the coefficient that comes from multiplying out this formula.\n"
+"You should be able to deduce that\n"
+"\n"
+"`1 + 1/4 + 1/9 + ... = π²/6`.\n"
+"\n"
+"[Euler's claim was considered scandalous at the time—treating infinite series like polynomials! But Euler's intuition was correct, and later mathematicians -- most notably Weierstrass -- made it rigorous and general.]"
+msgstr ""
+
 #: Game.Levels.L1RealAnalysisStory.L06_intro
 msgid "Excellent! You've learned the `intro` tactic for universal statements.\n"
 "\n"
@@ -5626,6 +5744,10 @@ msgid "# Problem 1\n"
 "Prove the same theorem as `BddOfConvNonzero`, but without the assumption that `L ≠ 0`. (Hint: break\n"
 "the proof into cases, and the case `L ≠ 0` should just be an appeal to `BddOfConvNonzero`. What\n"
 "do you do in the other case?)"
+msgstr ""
+
+#: Game.Levels.L17Pset.L06
+msgid "The Comparison Test"
 msgstr ""
 
 #: Game.Levels.L9Pset.L9Pset3
@@ -5929,6 +6051,10 @@ msgstr ""
 msgid "Archimedean Property"
 msgstr ""
 
+#: Game.Levels.L17Pset.L05'
+msgid "Monotone Limit Bound"
+msgstr ""
+
 #: Game.Levels.L9Pset.L9Pset2
 msgid "`N * (N + 1)` is always even."
 msgstr ""
@@ -6094,6 +6220,10 @@ msgid "Excellent! You've shown that the oscillating sequence `(-1)^n` has a conv
 "- Using subsequences to understand **limsup** and **liminf**\n"
 "\n"
 "Great work on completing Lecture 10! You now have the complete Algebraic Limit Theorem, order properties of limits, and the power of subsequences at your disposal."
+msgstr ""
+
+#: Game.Levels.L17Pset.L05
+msgid "If `a : ℕ → ℝ` is nonnegative, then `Series a` is `Monotone`."
 msgstr ""
 
 #: Game.Levels.L13Lecture
@@ -6331,6 +6461,15 @@ msgid "# Level 1: The Archimedean Property\n"
 "## Hint:\n"
 "\n"
 "If you get stuck and don't see a Hint, try backtracking until you do."
+msgstr ""
+
+#: Game.Levels.L17Pset.L06
+msgid "# Level 3: The Comparison Test\n"
+"\n"
+"Prove the `ComparisonTest`: if `a n` is dominated by a convergent series,\n"
+"then it also converges.\n"
+"\n"
+"(In lecture 17, we proved a special case of this theorem, when we started studying the Basel Problem.)"
 msgstr ""
 
 #: Game.Levels.L16Levels.L01_check
@@ -6836,6 +6975,10 @@ msgid "# Level 2: Bounded\n"
 "Construct the bound `M`, prove it's positive, then verify it works for all terms by splitting into the two cases. Let your `TermLeSum` theorem shine!\n"
 "\n"
 "Good luck! 🚀"
+msgstr ""
+
+#: Game.Levels.L18Levels.L01
+msgid "# Level 1: Rearrangements"
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset5
