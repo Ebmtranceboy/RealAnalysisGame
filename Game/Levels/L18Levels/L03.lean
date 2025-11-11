@@ -1,6 +1,6 @@
 import Game.Levels.L18Levels.L02
 
-open Finset
+open Finset Function
 
 World "Lecture18"
 Level 3

@@ -113,6 +113,12 @@ msgid "`(a : ℕ → ℝ) := ∃ L, SeqLim a L`\n"
 "`L : ℝ` so that `a → L`, that is, `SeqLim a L` holds."
 msgstr ""
 
+#: Game.Levels.L18Levels.L02
+msgid "# Level 2: Alternating Series Test\n"
+"\n"
+"Suppose `a n` is an `Antitone` sequence with limit `0`. (And hence nonnegative at all inputs by `AntitoneLimitBound` -- to be proved in the homework.)"
+msgstr ""
+
 #: Game.Levels.L6Levels.L04_Cases'
 msgid "When have a hypothesis `h : P ∨ Q`, you can say `cases' h with h1 h2`; this will make two new Game Boards, one with an extra hypothesis `h1 : P`, and the other with the hypothesis `h2 : Q`. You'll have to solve both to solve the original Goal!"
 msgstr ""
@@ -333,6 +339,10 @@ msgstr ""
 msgid "If a sequence `a : ℕ → ℝ` has two convergent subsequences, `a ∘ σ` converges to `L` and `a ∘ τ` converges to `M ≠ L`, then `a` is not convergent."
 msgstr ""
 
+#: Game.Levels.L18Levels.L02
+msgid "If `a` decreases to `0`, then the alternating series `Series (fun n ↦ (-1)^n * a n)` converges."
+msgstr ""
+
 #: Game.Levels.L17Pset.L05
 msgid "Monotonicity of Series"
 msgstr ""
@@ -403,6 +413,12 @@ msgstr ""
 msgid "# Lecture 12: Cauchy Sequences II"
 msgstr ""
 
+#: Game.Levels.L18Levels.L03
+msgid "# Level 3: Rearrangement Theorem I\n"
+"\n"
+"If `a n` is absolutely convergent, then any rearrangement of its terms also converges to the same sum."
+msgstr ""
+
 #: Game.Levels.L3Pset.L3Pset3
 msgid "Determine what the limit of the sequence `1 / n ^ 2` is, and prove it."
 msgstr ""
@@ -415,6 +431,10 @@ msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L05_use
 msgid "There exists a real number that makes this binomial expansion work."
+msgstr ""
+
+#: Game.Levels.L18Levels.L04
+msgid "Rearrangement Theorem II"
 msgstr ""
 
 #: Game.Levels.L10PsetIntro
@@ -718,6 +738,10 @@ msgid "# Level 1: Induction\n"
 "- Use `ring_nf` to simplify `2 * 2^k = 2^(k+1)`"
 msgstr ""
 
+#: Game.Levels.L18Levels.L01
+msgid "Absolute Convergence Implies Convergence"
+msgstr ""
+
 #: Game.Levels.L13PsetIntro
 msgid "# Problem Set 13\n"
 "\n"
@@ -844,6 +868,10 @@ msgid "# Problem 1:\n"
 "The two sequences are equivalent if `a n - b n` goes to zero, that is, if for all `ε > 0, ∃ N, ∀ n ≥ N, |a n - b n| < ε`.\n"
 "\n"
 "Hint: In Lecture 8, we proved a theorem (now) called `IdLeTwoPow`..."
+msgstr ""
+
+#: Game.Levels.L18Levels.L03
+msgid "If `Series a` converges absolutely, then any rearrangement of `a` also converges, and to the same sum."
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L00_the_problem
@@ -1141,6 +1169,76 @@ msgid "# Outstanding! You've proven that Cauchy sequences are bounded!\n"
 "Congratulations on completing this lecture!"
 msgstr ""
 
+#: Game.Levels.L18Lecture
+msgid "# Lecture 18: Rearrangements\n"
+"\n"
+"**SIMPLICIO:** Does rearranging the terms of a series change its sum?\n"
+"\n"
+"**SOCRATES:** Great question! Here's the way I like to illustrate this idea. Imagine a massive\n"
+"matrix, $M$, infinite in both directions, to the right, and down. It is upper triangular, has $-1$s on the diagonal, and at\n"
+"position $(i, j)$ for $i < j$ its entry is $1/ 2 ^ {(j - i + 1)}$. So $M$ looks like this:\n"
+"\n"
+"$\n"
+"\\begin{pmatrix}\n"
+"-1 & 1/2 & 1/4 & 1/8 & 1/16 & \\cdots \\\\\n"
+"0 & -1 & 1/2 & 1/4 & 1/8 & \\cdots \\\\\n"
+"0 & 0 & -1 & 1/2 & 1/4 & \\cdots \\\\\n"
+"0 & 0 & 0 & -1 & 1/2 & \\cdots \\\\\n"
+"\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\ddots\n"
+"\\end{pmatrix}\n"
+"$\n"
+"\n"
+"What is the sum of the elements in $M$?\n"
+"\n"
+"**SIMPLICIO:** Ok let's see if we can work this out. Hmm this isn't so hard, I'll sum the rows, and\n"
+"then add those up.\n"
+"\n"
+"The first row sums to $-1 + 1/2 + 1/4 + 1/8 + \\cdots = 0$.\n"
+"\n"
+"The second row sum is $0 + -1 + 1/2 + 1/4 + \\cdots = 0$ as well.\n"
+"\n"
+"In fact, every row obviously sums to $0$. So the sum of all the elements in $M$ is $0$.\n"
+"\n"
+"**SOCRATES:** Very good. What will my next question be?\n"
+"\n"
+"**SIMPLICIO:** I bet you're going to ask me to sum the columns instead of the rows...?\n"
+"\n"
+"**SOCRATES:** You bet! :)\n"
+"\n"
+"**SIMPLICIO:** Alright, let's do that. The first column sums to $-1 + 0 + 0 + 0 + \\cdots = -1$.\n"
+"\n"
+"The second column sums to $1/2 + -1 + 0 + 0 + \\cdots = -1/2$.\n"
+"\n"
+"The third column sums to $1/4 + 1/2 + -1 + 0 + \\cdots = -1/4$.\n"
+"\n"
+"Ok, I see the pattern. The $n$th column sums to $-1 / 2^{n-1}$. So the sum of all the elements in $M$ is\n"
+"$-1 - 1/2 - 1/4 - 1/8 - \\cdots = -2$.\n"
+"\n"
+"Uh oh. So what *is* the sum?\n"
+"\n"
+"**SOCRATES:** Well that's just it! There is *no* 'the sum', because it depends on in what order you add the terms up!\n"
+"A sequence is called 'conditionally convergent' if it converges, but not when you add absolute values.\n"
+"That is, the matrix $|M|$ would look like this:\n"
+"\n"
+"$\n"
+"\\begin{pmatrix}\n"
+"1 & 1/2 & 1/4 & 1/8 & 1/16 & \\cdots \\\\\n"
+"0 & 1 & 1/2 & 1/4 & 1/8 & \\cdots \\\\\n"
+"0 & 0 & 1 & 1/2 & 1/4 & \\cdots \\\\\n"
+"0 & 0 & 0 & 1 & 1/2 & \\cdots \\\\\n"
+"\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\ddots\n"
+"\\end{pmatrix}\n"
+"$\n"
+"\n"
+"and hopefully it's clear (just from the diagonal!) that the sum of all its elements diverges (to infinity).\n"
+"\n"
+"People like Euler and Ramanujan were absolute wizards with divergent series, getting out of them all\n"
+"kinds of bizarre results, like $1 + 2 + 3 + 4 + \\cdots$ '`=`' $-1/12$. As the great\n"
+"Oliver Heaviside supposedly once said, `This series is divergent, therefore we may be able to do something with it!`\n"
+"\n"
+"**SIMPLICIO:** I like it! Let's go."
+msgstr ""
+
 #: Game.Levels.L10Pset.L10Pset3
 msgid "If sequences `a b : ℕ → ℝ` converge with `a` going to `L` and `b` going to `M`, then `a n * b n` converges to `L * M`."
 msgstr ""
@@ -1264,6 +1362,12 @@ msgstr ""
 
 #: Game.Levels.L3Lecture
 msgid "Lecture 3: More fun with Sequences"
+msgstr ""
+
+#: Game.Levels.L18Levels.L04
+msgid "# Level 4: Rearrangement Theorem II\n"
+"\n"
+"If `a n` is only conditionally convergent, then for any real number `L` (and also `+∞` and `-∞`, though we won't prove it here), there exists a rearrangement of its terms that converges to `L`."
 msgstr ""
 
 #: Game.Levels.L17Pset.L05
@@ -2548,6 +2652,10 @@ msgstr ""
 msgid "# Problem 1"
 msgstr ""
 
+#: Game.Levels.L18Levels.L02
+msgid "Alternating Series Test"
+msgstr ""
+
 #: Game.Levels.L3Levels.L02_OneOverN
 msgid "If `a n = 1 / n`, then `SeqLim a 0`; that is, the sequence\n"
 "`1 / n` converges to zero."
@@ -3505,6 +3613,15 @@ msgstr ""
 msgid "If `a n ≤ a (n+1)` holds for all `n`, then `a` is `Monotone`."
 msgstr ""
 
+#: Game.Levels.L18Levels.L01
+msgid "# Level 1: Absolute Convergence Implies Convergence\n"
+"\n"
+"A series `Series a` is said to converge *absolutely* (`AbsSeriesConv`) if the series of absolute values\n"
+"`Series (fun n ↦ |a n|)` converges.\n"
+"\n"
+"Prove `Conv_of_AbsSeriesConv`: if a series converges absolutely, then it converges."
+msgstr ""
+
 #: Game.Levels.L11Levels.L01_IsCauchyOfLim
 msgid "`(a : ℕ → X) : Prop := ∀ (ε : X), 0 < ε → ∃ N : ℕ, ∀ n ≥ N, ∀ m ≥ n, |a m - a n| < ε`\n"
 "\n"
@@ -3660,6 +3777,10 @@ msgstr ""
 
 #: Game.Levels.L14Levels.L01_BolzanoWeierstrass
 msgid "If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is bounded, then it has a subsequence which is Cauchy."
+msgstr ""
+
+#: Game.Levels.L18Levels.L01
+msgid "If a sequence `a : ℕ → ℝ` is Cauchy, then it converges."
 msgstr ""
 
 #: Game.Levels.L15Lecture
@@ -3912,6 +4033,10 @@ msgstr ""
 msgid "If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) does not have unbounded peaks, then it has a `Monotone` subsequence."
 msgstr ""
 
+#: Game.Levels.L18Levels.L03
+msgid "Rearrangement Theorem I"
+msgstr ""
+
 #: Game.Levels.L6Levels.L03_DotNotation
 msgid "# Level 4: Dot Notation - Accessing Parts of Complex Information\n"
 "\n"
@@ -4026,56 +4151,6 @@ msgstr ""
 
 #: Game.Levels.L13Pset.L13Pset1
 msgid "Prove `AntitoneSubseq_of_UnBddPeaks`"
-msgstr ""
-
-#: Game.Levels.L18Lecture
-msgid "# Lecture 18: Rearrangements\n"
-"\n"
-"**SIMPLICIO:** Does rearranging the terms of a series change its sum?\n"
-"\n"
-"**SOCRATES:** Great question! Here's the way I like to illustrate this question. Imagine a massive\n"
-"matrix, $M$, infinite in both directions. It is upper triangular, has $-1$s on the diagonal, and at\n"
-"position $(i, j)$ for $i < j$ its entry is $1/ 2 ^ {(j - i + 1)}$. So $M$ looks like this:\n"
-"\n"
-"$\n"
-"\\begin{pmatrix}\n"
-"-1 & 1/2 & 1/4 & 1/8 & 1/16 & \\cdots \\\\\n"
-"0 & -1 & 1/2 & 1/4 & 1/8 & \\cdots \\\\\n"
-"0 & 0 & -1 & 1/2 & 1/4 & \\cdots \\\\\n"
-"0 & 0 & 0 & -1 & 1/2 & \\cdots \\\\\n"
-"\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\ddots\n"
-"\\end{pmatrix}\n"
-"$\n"
-"\n"
-"What is the sum of the elements in $M$?\n"
-"\n"
-"**SIMPLICIO:** Ok let's see if we can work this out. Hmm this isn't so hard, I'll sum the rows, and\n"
-"then add those up.\n"
-"\n"
-"The first row sums to $-1 + 1/2 + 1/4 + 1/8 + \\cdots = 0$.\n"
-"\n"
-"The second row sum is $0 + -1 + 1/2 + 1/4 + \\cdots = 0$ as well.\n"
-"\n"
-"In fact, every row obviously sums to $0$. So the sum of all the elements in $M$ is $0$.\n"
-"\n"
-"**SOCRATES:** Very good. What will my next question be?\n"
-"\n"
-"**SIMPLICIO:** I bet you're going to ask me to sum the columns instead of the rows...?\n"
-"\n"
-"**SOCRATES:** You bet! :)\n"
-"\n"
-"**SIMPLICIO:** Alright, let's do that. The first column sums to $-1 + 0 + 0 + 0 + \\cdots = -1$.\n"
-"\n"
-"The second column sums to $1/2 + -1 + 0 + 0 + \\cdots = -1/2$.\n"
-"\n"
-"The third column sums to $1/4 + 1/2 + -1 + 0 + \\cdots = -1/4$.\n"
-"\n"
-"Ok, I see the pattern. The $n$th column sums to $-1 / 2^{n-1}$. So the sum of all the elements in $M$ is\n"
-"$-1 - 1/2 - 1/4 - 1/8 - \\cdots = -2$.\n"
-"\n"
-"Uh oh. So what *is* the sum?\n"
-"\n"
-"**SOCRATES:** Well that's just it! There is *no* 'sum', because it depends on in what order you add the terms up."
 msgstr ""
 
 #: Game.Levels.L12Levels.L00_SubseqIterate
@@ -4494,10 +4569,6 @@ msgid "Let's compare now to the purely natural language proof:\n"
 "- **The addition `⌈1 / ε⌉₊ + 1` happens in `ℕ`**, then gets cast to `ℝ` - this is why we need `push_cast`\n"
 "\n"
 "**Historical Note**: While often attributed to Archimedes (c. 287-212 BCE), this property was likely known to Eudoxus (c. 408-355 BCE) and appears in Euclid's *Elements*. Archimedes used a version of this principle in his method of exhaustion, particularly in calculating areas and volumes by approximating them with polygons of increasing numbers of sides."
-msgstr ""
-
-#: Game.Levels.L18Levels.L01
-msgid "Rearrangements"
 msgstr ""
 
 #: Game.Levels.L1RealAnalysisStory.L00_the_problem
@@ -4922,6 +4993,10 @@ msgstr ""
 
 #: Game.Levels.L13Levels.L03_MonotoneSubseq
 msgid "If you have a proposition `P`, you can say `if P then x else y`."
+msgstr ""
+
+#: Game.Levels.L18Levels.L02
+msgid "If `a : ℕ → ℝ` is `Antitone` and converges to `L`, then for all `n`, `L ≤ a n`. Analogous to `MonotoneLimitBound`."
 msgstr ""
 
 #: Game.Levels.L16Lecture
@@ -5388,6 +5463,9 @@ msgstr ""
 #: Game.Levels.L17Pset.L05'
 #: Game.Levels.L17Pset.L06
 #: Game.Levels.L18Levels.L01
+#: Game.Levels.L18Levels.L02
+#: Game.Levels.L18Levels.L03
+#: Game.Levels.L18Levels.L04
 msgid ""
 msgstr ""
 
@@ -5708,6 +5786,11 @@ msgstr ""
 msgid "# Problem Set 10\n"
 "\n"
 "Good luck!"
+msgstr ""
+
+#: Game.Levels.L18Levels.L01
+#: Game.Levels.L18Levels.L01
+msgid "If `Series (fun n ↦ |a n|)` converges, then `Series a` converges."
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset3
@@ -6975,10 +7058,6 @@ msgid "# Level 2: Bounded\n"
 "Construct the bound `M`, prove it's positive, then verify it works for all terms by splitting into the two cases. Let your `TermLeSum` theorem shine!\n"
 "\n"
 "Good luck! 🚀"
-msgstr ""
-
-#: Game.Levels.L18Levels.L01
-msgid "# Level 1: Rearrangements"
 msgstr ""
 
 #: Game.Levels.L1Pset.L1Pset5
