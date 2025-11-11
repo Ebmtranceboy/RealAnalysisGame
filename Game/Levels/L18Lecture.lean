@@ -1,13 +1,11 @@
 import Game.Levels.L18Levels.L01
 import Game.Levels.L18Levels.L02
-import Game.Levels.L18Levels.L03
-import Game.Levels.L18Levels.L04
 
 World "Lecture18"
-Title "Lecture 18: Rearrangements"
+Title "Lecture 18: Infinite Addition"
 
 Introduction r"
-# Lecture 18: Rearrangements
+# Lecture 18: Infinite Addition
 
 **SIMPLICIO:** Does rearranging the terms of a series change its sum?
 
