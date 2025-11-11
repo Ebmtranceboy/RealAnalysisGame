@@ -74,7 +74,7 @@ In Lean, the definition is written like so:
 
 This syntax should be familiar from the `have` tactic you already know and love.
 The special symbol `def` (instead of `have`) means that we're about to define something, and
-`SeqLim` is its name (for squence limit, of course; but we could have called it whatever we want). Then our assumptions are a sequence `a : ℕ → ℝ` and
+`SeqLim` is its name (for sequence limit, of course; but we could have called it whatever we want). Then our assumptions are a sequence `a : ℕ → ℝ` and
 some real number `L : ℝ`. Then after the colon `:` goes our output, which in this case is `Prop`, that is, a statement (proposition) that can be true or false. So `SeqLim` is really a function that takes a sequence and hypothetical limiting value, and returns true or false based on whether
 the condition is satisfied. Then comes a colon-equals `:=`, after which the
 exact condition to be tested is specified. And the condition is what we already said, for all epsilon, yadda yadda. The big difference is that you can write `have` inside a proof, but you can't write `def` inside a proof;
