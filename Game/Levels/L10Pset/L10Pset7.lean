@@ -16,12 +16,12 @@ different limits, then the sequence itself cannot converge.
 /--
 If a sequence `a : ℕ → ℝ` has two convergent subsequences, `a ∘ σ` converges to `L` and `a ∘ τ` converges to `M ≠ L`, then `a` is not convergent.
 -/
-TheoremDoc DivergeOfDiffSubseqLim as "DivergeOfDiffSubseqLim" in "Sequences"
+TheoremDoc Diverge_of_DiffSubseqLim as "Diverge_of_DiffSubseqLim" in "Sequences"
 
 
 /-- Prove this
 -/
-Statement DivergeOfDiffSubseqLim (a : ℕ → ℝ) (σ τ : ℕ → ℕ)
+Statement Diverge_of_DiffSubseqLim (a : ℕ → ℝ) (σ τ : ℕ → ℕ)
     (σsub : Subseq σ) (τsub : Subseq τ) (L M : ℝ)
     (hσ : SeqLim (a ∘ σ) L) (hτ : SeqLim (a ∘ τ) M) (hLM : L ≠ M)
     : ¬ SeqConv a := by

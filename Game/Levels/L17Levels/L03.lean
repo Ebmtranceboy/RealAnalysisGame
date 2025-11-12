@@ -79,7 +79,7 @@ Your induction proof was beautifully straightforward:
 - **Base case:** Empty sums are equal, so `0 ≤ 0`
 - **Inductive step:** Split each sum using `sum_range_succ`, apply the inductive hypothesis to the first `n` terms, and use `a n ≤ b n` for the last term
 
-The inequality `∑_{k<n} a k + a n ≤ ∑_{k<n} b k + b n` followed immediately from combining two simpler inequalities!
+The inequality $∑_{k<n} a k + a n ≤ ∑_{k<n} b k + b n$ followed immediately from combining two simpler inequalities!
 
 ## Why This Is Powerful
 

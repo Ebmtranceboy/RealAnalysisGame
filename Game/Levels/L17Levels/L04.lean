@@ -14,7 +14,7 @@ Near the turn of the 18th century, the Bernoulli brothers Johann and Jakob becam
 This became known as the **Basel Problem** (after Basel, Switzerland, where the Bernoullis lived). Despite their considerable mathematical prowess, they could not find its exact value.
 
 It would take several more decades, and their most brilliant student—the legendary Leonhard Euler—to solve it in 1734. Euler showed that:
-`∑_{k=1}^∞ 1/k² = π²/6`
+$∑_{k=1}^\\infty 1/k^2 = \\pi^2/6$.
 
 (Our series starts at k=2, so it equals `π²/6 - 1`, but that's a minor detail.)
 
@@ -34,28 +34,34 @@ By the Series Order Theorem (Level 3), this means:
 
 So the partial sums of the Basel series are **bounded above by 1**!
 
-## The Monotone Bounded Convergence Theorem
+## New Theorems:
 
-Since we're adding positive terms, the partial sums form a **monotone increasing** sequence. Combined with being bounded above, this guarantees convergence!
+**New Theorem (`SeqConv_of_IsCauchy`):** The completeness of `ℝ` (which we proved).
+If a sequence of **real** numbers is Cauchy, then it converges.
+Recall that we had already proved that every Cauchy sequence in `ℚ` converges (`Conv_of_IsCauchy`)
+to a real number. So why are we proving the same theorem again, just with real-valued sequences?
+Couldn't we have stated and proved it once and for all for either type, `a : ℕ → X`?
 
-**New Theorem (`SeqConvOfMonotoneBdd`):** If a sequence `a : ℕ → ℝ` is:
+No! The theorems are true for *completely different* reasons. `Conv_of_IsCauchy` is true
+by the **construction** of the real numbers (as equivalence classes of Cauchy sequences of rationals).
+Meanwhile, `SeqConv_of_IsCauchy` is true because of the **completeness** of the real numbers --
+in fact, any \"completion\" of a metric space as equivalence classes of Cauchy sequences will
+always be complete. Two different reasons / proofs, two different theorem statements.
+
+
+**New Theorem (`SeqConv_of_MonotoneBdd`):** If a sequence `a : ℕ → ℝ` is:
 - **Monotone:** `a n ≤ a (n+1)` for all `n`
 - **Bounded:** `a n ≤ M` for all `n` and some `M`
 
-Then `SeqConv a` holds—the sequence converges!
-
-**New Theorem (`SeqConv_of_IsCauchy`):** The completeness of `ℝ` (which we proved).
-If a sequence of **real** numbers is Cauchy, then it converges. (This is true for a *different* reason
-than for sequences of rationals! For rationals, it's true by the *definition* (/ construction) of `ℝ`; for the reals,
-it's a theorem.)
-
-**Why?** We already proved that monotone bounded sequences are Cauchy (`IsCauchyOfMonotoneBdd`). By the **completeness of ℝ**, every Cauchy sequence converges (`Conv_of_IsCauchy`). Combining these gives the result!
+We already proved that monotone bounded sequences are Cauchy (`IsCauchy_of_MonotoneBdd`). So
+`SeqConv_of_MonotoneBdd` is simply combining
+this with `SeqConv_of_IsCauchy`.
 
 ## Your Task
 
 Prove that the Basel series converges by:
 
-1. **First**, prove `SeqConvOfMonotoneBdd` by combining `IsCauchyOfMonotoneBdd` with completeness
+1. **First**, prove `SeqConv_of_MonotoneBdd` by combining `IsCauchy_of_MonotoneBdd` with completeness
 
 2. **Then**, apply it to `Series a` where `a n = 1/(n+2)²`, showing:
    - The partial sums are **bounded** by 1 (using comparison with Leibniz series)
@@ -83,15 +89,16 @@ TheoremDoc SeqConv_of_IsCauchy as "SeqConv_of_IsCauchy" in "Sequences"
 
 /-- If `a : ℕ → ℝ` is Monotone and bounded, then `SeqConv a`.
 -/
-TheoremDoc SeqConvOfMonotoneBdd as "SeqConvOfMonotoneBdd" in "Series"
+TheoremDoc SeqConv_of_MonotoneBdd as "SeqConv_of_MonotoneBdd" in "Series"
 
-theorem SeqConvOfMonotoneBdd (a : ℕ → ℝ) (M : ℝ) (hM : ∀ n, a n ≤ M) (ha : Monotone a) : SeqConv a := by
-apply SeqConv_of_IsCauchy (IsCauchyOfMonotoneBdd ha hM)
+theorem SeqConv_of_MonotoneBdd (a : ℕ → ℝ) (M : ℝ) (hM : ∀ n, a n ≤ M) (ha : Monotone a) :
+  SeqConv a := by
+apply SeqConv_of_IsCauchy (IsCauchy_of_MonotoneBdd ha hM)
 
-NewTheorem SeqConvOfMonotoneBdd SeqConv_of_IsCauchy
+NewTheorem SeqConv_of_MonotoneBdd SeqConv_of_IsCauchy
 
 Statement (a : ℕ → ℝ) (ha : ∀ n, a n = 1 / ((n + 2) ^ 2)) : SeriesConv a := by
-apply SeqConvOfMonotoneBdd (Series a) 1
+apply SeqConv_of_MonotoneBdd (Series a) 1
 let b : ℕ → ℝ := fun n ↦ 1 / ((n + 1) * (n + 2))
 have hb : ∀ n, b n = 1 / ((n + 1) * (n + 2)) := by intro n; rfl
 have hab : ∀ n, a n ≤ b n := by
@@ -124,7 +131,7 @@ Magnificent! You've proven that the Basel series converges—a major milestone i
 **Theorem:** The series `∑ k, 1/(k+2)² = 1/4 + 1/9 + 1/16 + ...` converges.
 
 You proved this using the **Monotone Bounded Convergence Theorem**, which you first established by connecting two powerful results:
-- `IsCauchyOfMonotoneBdd`: monotone bounded sequences are Cauchy
+- `IsCauchy_of_MonotoneBdd`: monotone bounded sequences are Cauchy
 - `Conv_of_IsCauchy`: by completeness of ℝ, Cauchy sequences converge
 
 ## The Proof Strategy

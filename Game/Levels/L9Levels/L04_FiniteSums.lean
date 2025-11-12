@@ -133,7 +133,7 @@ This result is essential for the next level! You'll use `TermLeSum` to prove tha
 
 ## Looking Ahead
 
-In the next level, you'll prove `BddOfConvNonzero`: convergent sequences with nonzero limits are bounded. This is a cornerstone result in analysis that tells us convergent sequences can't escape to infinity.
+In the next level, you'll prove `Bdd_of_ConvNonzero`: convergent sequences with nonzero limits are bounded. This is a cornerstone result in analysis that tells us convergent sequences can't escape to infinity.
 
 Ready to see your theorem in action? Let's move on!
 "

@@ -56,7 +56,7 @@ TheoremDoc Conv_of_AbsSeriesConv as "Conv_of_AbsSeriesConv" in "Series"
 Statement Conv_of_AbsSeriesConv {a : ℕ → ℝ} (ha : AbsSeriesConv a) : SeriesConv a := by
 apply SeqConv_of_IsCauchy
 intro ε hε
-apply IsCauchyOfSeqConv at ha
+apply IsCauchy_of_SeqConv at ha
 choose N hN using ha ε hε
 use N
 intro n hn m hnm
@@ -159,7 +159,7 @@ sorry
 Statement Conv_of_AbsSeriesConv {a : ℕ → ℝ} (ha : AbsSeriesConv a) : SeriesConv a := by
 apply SeqConv_of_IsCauchy
 change SeqConv (Series (fun n ↦ |a n|)) at ha
-apply IsCauchyOfSeqConv at ha
+apply IsCauchy_of_SeqConv at ha
 intro ε hε
 choose N hN using ha ε hε
 use N

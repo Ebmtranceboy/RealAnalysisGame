@@ -92,9 +92,9 @@ have s2nMono : Monotone S2n := by apply MonotoneSeriesEven ha
 have s2np1Anti : Antitone S2np1 := by apply AntitoneSeriesOdd ha
 have s2nBdd : ∀ n, S2n n ≤ a 0 := by apply BddSeriesEven ha
 have s2np1Bdd : ∀ n, 0 ≤ S2np1 n := by apply BddSeriesOdd ha TermsBddBelow
-have s2nCauchy : IsCauchy S2n := by apply IsCauchyOfMonotoneBdd s2nMono s2nBdd
+have s2nCauchy : IsCauchy S2n := by apply IsCauchy_of_MonotoneBdd s2nMono s2nBdd
 have s2nLim : SeqConv S2n := by apply SeqConv_of_IsCauchy s2nCauchy
-have s2np1Cauchy : IsCauchy S2np1 := by apply IsCauchyOfAntitoneBdd s2np1Anti s2np1Bdd
+have s2np1Cauchy : IsCauchy S2np1 := by apply IsCauchy_of_AntitoneBdd s2np1Anti s2np1Bdd
 have s2np1Lim : SeqConv S2np1 := by apply SeqConv_of_IsCauchy s2np1Cauchy
 choose L hL using s2nLim
 choose M hM using s2np1Lim

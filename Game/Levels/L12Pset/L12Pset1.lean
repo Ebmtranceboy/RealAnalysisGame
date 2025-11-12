@@ -7,12 +7,12 @@ Title "Problem 1"
 Introduction "
 # Problem 1:
 
-In lecture, we proved `IsCauchyOfMonotoneBdd`: if a sequence is `Monotone` and bounded (from above),
+In lecture, we proved `IsCauchy_of_MonotoneBdd`: if a sequence is `Monotone` and bounded (from above),
 then it `IsCauchy`. Here you'll prove the same thing but going down: if a sequence is `Antitone` (that
 is, non-increasing -- so decreasing but not necessarily strictly so; `i ≤ j → a j ≤ a i) and bounded
 from *below*, then it's Cauchy.
 
-Theorem: `IsCauchyOfAntitoneBdd`.
+Theorem: `IsCauchy_of_AntitoneBdd`.
 
 ## New definition: `Antitone`
 
@@ -59,7 +59,7 @@ TheoremDoc IsCauchyNeg as "IsCauchyNeg" in "Sequences"
 NewTheorem MonotoneNeg_of_Antitone IsCauchyNeg
 
 
-/-- Prove `IsCauchyOfAntitoneBdd`
+/-- Prove `IsCauchy_of_AntitoneBdd`
 -/
 Statement  {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [FloorSemiring X]
     {a : ℕ → X} {M : X} (ha : Antitone a) (hM : ∀ n, M ≤ a n)
@@ -67,7 +67,7 @@ Statement  {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] [
 let b := -a
 have hb : Monotone b := by apply MonotoneNeg_of_Antitone a ha
 have b_bdd : ∀ n, b n ≤ -M := by intro n; change -a n ≤ - M; linarith [hM n]
-have bCauchy : IsCauchy b := IsCauchyOfMonotoneBdd hb b_bdd
+have bCauchy : IsCauchy b := IsCauchy_of_MonotoneBdd hb b_bdd
 have negbCauchy : IsCauchy (-b) := IsCauchyNeg b bCauchy
 change IsCauchy (- -a) at negbCauchy
 rewrite [show - - a = a by ring_nf] at negbCauchy
