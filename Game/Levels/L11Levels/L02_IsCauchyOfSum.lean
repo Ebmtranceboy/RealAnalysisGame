@@ -40,11 +40,11 @@ Let's prove it!
 /--
 If sequences `a` and `b` are Cauchy, then so is their sum.
 -/
-TheoremDoc IsCauchyOfSum as "IsCauchyOfSum" in "Sequences"
+TheoremDoc IsCauchy_of_Sum as "IsCauchy_of_Sum" in "Sequences"
 
 /-- Prove this
 -/
-Statement IsCauchyOfSum {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (a b : ℕ → X) (ha : IsCauchy a) (hb : IsCauchy b)
+Statement IsCauchy_of_Sum {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (a b : ℕ → X) (ha : IsCauchy a) (hb : IsCauchy b)
     : IsCauchy (a + b) := by
 intro ε hε
 choose N1 hN1 using ha (ε / 2) (by bound)

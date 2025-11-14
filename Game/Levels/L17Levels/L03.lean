@@ -32,7 +32,7 @@ We'll use this exact strategy in the next level to prove the Basel series conver
 
 This is a straightforward **induction** argument:
 - **Base case (n=0):** Both sums are empty, so `0 ≤ 0` ✓
-- **Inductive step:** If `∑_{k<n} a k ≤ ∑_{k<n} b k` and `a n ≤ b n`, then adding `a n` to the left and `b n` to the right preserves the inequality.
+- **Inductive step:** If $\\sum_{k<n} a_k \\le \\sum_{k<n} b_k$ and `a n ≤ b n`, then adding `a n` to the left and `b n` to the right preserves the inequality.
 
 ## Your Task
 
@@ -79,7 +79,7 @@ Your induction proof was beautifully straightforward:
 - **Base case:** Empty sums are equal, so `0 ≤ 0`
 - **Inductive step:** Split each sum using `sum_range_succ`, apply the inductive hypothesis to the first `n` terms, and use `a n ≤ b n` for the last term
 
-The inequality `∑_{k<n} a k + a n ≤ ∑_{k<n} b k + b n` followed immediately from combining two simpler inequalities!
+The inequality $∑_{k<n} a k + a n ≤ ∑_{k<n} b k + b n$ followed immediately from combining two simpler inequalities!
 
 ## Why This Is Powerful
 

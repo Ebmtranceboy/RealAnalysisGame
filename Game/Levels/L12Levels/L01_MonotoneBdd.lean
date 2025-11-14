@@ -104,11 +104,11 @@ NewTactic push_neg
 /--
 If a sequence `a : ℕ → X` (where `X` can be `ℚ` or `ℝ`) is monotone and bounded, then it is Cauchy.
 -/
-TheoremDoc IsCauchyOfMonotoneBdd as "IsCauchyOfMonotoneBdd" in "Sequences"
+TheoremDoc IsCauchy_of_MonotoneBdd as "IsCauchy_of_MonotoneBdd" in "Sequences"
 
 /-- Prove this
 -/
-Statement IsCauchyOfMonotoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X]
+Statement IsCauchy_of_MonotoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X]
   [FloorSemiring X] {a : ℕ → X} {M : X} (ha : Monotone a) (hM : ∀ n, a n ≤ M)
   : IsCauchy a := by
 intro ε hε

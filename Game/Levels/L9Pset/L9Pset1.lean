@@ -8,17 +8,17 @@ Title "Problem 1"
 
 Introduction "# Problem 1
 
-Prove the same theorem as `BddOfConvNonzero`, but without the assumption that `L ≠ 0`. (Hint: break
-the proof into cases, and the case `L ≠ 0` should just be an appeal to `BddOfConvNonzero`. What
+Prove the same theorem as `Bdd_of_ConvNonzero`, but without the assumption that `L ≠ 0`. (Hint: break
+the proof into cases, and the case `L ≠ 0` should just be an appeal to `Bdd_of_ConvNonzero`. What
 do you do in the other case?)
 
 "
 
 /-- If `a : ℕ → ℝ` is a sequence which converges, then it is bounded. -/
-TheoremDoc BddOfConv as "BddOfConv" in "Sequences"
+TheoremDoc Bdd_of_Conv as "Bdd_of_Conv" in "Sequences"
 
 /-- Prove the statement. -/
-Statement BddOfConv (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) :
+Statement Bdd_of_Conv (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) :
     SeqBdd a := by
 by_cases hL : L = 0
 rewrite [hL] at ha
@@ -35,6 +35,6 @@ have hn' : N ≤ n := by bound
 specialize hN n hn'
 ring_nf at hN
 linarith [hN, f1]
-apply BddOfConvNonzero a L ha hL
+apply Bdd_of_ConvNonzero a L ha hL
 
 Conclusion ""

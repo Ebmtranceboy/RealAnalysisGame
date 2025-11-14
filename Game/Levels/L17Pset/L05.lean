@@ -7,15 +7,15 @@ Title "Monotonicity of Series"
 Introduction "
 # Level 1: Monotonicity of Series
 
-Prove `MonotoneOfNonNegSeries`:
+Prove `Monotone_of_NonNegSeries`:
 If `0 ≤ a n`, then `Series a` is Monotone.
 
 "
 /-- If `a : ℕ → ℝ` is nonnegative, then `Series a` is `Monotone`.
 -/
-TheoremDoc MonotoneOfNonNegSeries as "MonotoneOfNonNegSeries" in "Series"
+TheoremDoc Monotone_of_NonNegSeries as "Monotone_of_NonNegSeries" in "Series"
 
-Statement MonotoneOfNonNegSeries {a : ℕ → ℝ} (ha : ∀ n, 0 ≤ a n) : Monotone (Series a) := by
+Statement Monotone_of_NonNegSeries {a : ℕ → ℝ} (ha : ∀ n, 0 ≤ a n) : Monotone (Series a) := by
 sorry
 
 

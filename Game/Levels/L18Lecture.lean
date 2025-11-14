@@ -53,7 +53,7 @@ Uh oh. So what *is* the sum?
 
 **SOCRATES:** Well that's just it! There is *no* 'the sum', because it depends on in what order you add the terms up!
 
-Infinite summation is not commutative!
+**Infinite summation is not commutative!**
 
 A *lot* of analysis is devoted to the study of this problem.
 A sequence is called 'conditionally convergent' if it converges, but not when you add absolute values.
@@ -73,7 +73,7 @@ and hopefully it's clear (just from the diagonal!) that the sum of all its eleme
 
 People like Euler and Ramanujan were absolute wizards with divergent series, getting out of them all
 kinds of bizarre results, like $1 + 2 + 3 + 4 + \cdots$ '`=`' $-1/12$. As the great
-Oliver Heaviside supposedly once said, `This series is divergent, therefore we may be able to do something with it!`
+Oliver Heaviside supposedly once said, 'This series is divergent, therefore we may be able to do something with it!'
 
 **SIMPLICIO:** I like it! Let's go.
 

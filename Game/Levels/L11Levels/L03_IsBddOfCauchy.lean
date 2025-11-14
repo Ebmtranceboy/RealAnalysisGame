@@ -45,11 +45,11 @@ Good luck!
 /--
 If a sequence `a` is Cauchy, then it is eventually bounded.
 -/
-TheoremDoc IsBddOfCauchy as "IsBddOfCauchy" in "Sequences"
+TheoremDoc IsBdd_of_Cauchy as "IsBdd_of_Cauchy" in "Sequences"
 
 /-- Prove this
 -/
-Statement IsBddOfCauchy {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (a : ℕ → X) (ha : IsCauchy a)
+Statement IsBdd_of_Cauchy {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (a : ℕ → X) (ha : IsCauchy a)
     : SeqBdd a := by
 choose N hN using ha 1 (by bound)
 use |a N| + 1 + ∑ k ∈ range N, |a k|

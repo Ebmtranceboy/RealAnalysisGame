@@ -15,7 +15,7 @@ More fun with Cauchy sequences. Show that `1/n` is Cauchy but is neither `Monoto
 -/
 Statement (a : ℕ → ℝ) (ha : ∀ n, a n = 1 / n) : IsCauchy a ∧ ¬ Monotone a ∧ ¬ Antitone a := by
 split_ands
-apply IsCauchyOfSeqConv
+apply IsCauchy_of_SeqConv
 use 0
 apply OneOverNLimZero a ha
 intro h

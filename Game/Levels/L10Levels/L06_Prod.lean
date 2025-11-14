@@ -25,7 +25,7 @@ a n * b n - L * M = (a n - L) * b n + L * (b n - M)
 The corner piece `(a n - L) * (b n - M)` gets absorbed into the first term—it's doubly small so it doesn't hurt us!
 
 **The Strategy:**
-1. Use `BddOfConvNonzero` to get a bound `K` on the sequence `b`
+1. Use `Bdd_of_ConvNonzero` to get a bound `K` on the sequence `b`
 2. Make `|a n - L| < ε/(2*K)` to control the first term
 3. Make `|b n - M| < ε/(2*|L|)` to control the second term
 4. Combine using the triangle inequality
@@ -45,7 +45,7 @@ Statement ProdLimNeNe (a b c : ℕ → ℝ) (L M : ℝ) (hL : L ≠ 0) (hM : M �
     (hb : SeqLim b M) (hc : ∀ n, c n = a n * b n):
     SeqLim c (L * M) := by
 intro ε hε
-choose K hK using BddOfConvNonzero b M hb hM
+choose K hK using Bdd_of_ConvNonzero b M hb hM
 have ε1 : 0 < ε / (2 * K) := by bound
 have absL : 0 < |L| := by apply abs_pos_of_nonzero hL
 have ε2 : 0 < ε / (2 * |L|) := by bound

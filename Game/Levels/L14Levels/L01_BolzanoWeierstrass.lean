@@ -47,7 +47,7 @@ The proof is short—maybe the shortest \"big theorem\" proof you'll see—preci
 
 **abs_le:** The companion to `abs_lt` for non-strict inequalities. Says `|x| ≤ y ↔ -y ≤ x ≤ y`, letting us split absolute value bounds into simultaneous one-sided inequalities.
 
-**IsCauchyOfAntitoneBdd:** From Pset 12. If a sequence is antitone (non-increasing) and bounded below, it's Cauchy. Dual to the monotone result.
+**IsCauchy_of_AntitoneBdd:** From Pset 12. If a sequence is antitone (non-increasing) and bounded below, it's Cauchy. Dual to the monotone result.
 
 **AntitoneSubseq_of_UnBddPeaks:** From Pset 13. If a sequence has unbounded peaks, we can extract an antitone (non-increasing) subsequence by picking the peaks themselves.
 
@@ -58,12 +58,12 @@ The proof uses **case analysis** with the dichotomy from Lecture 13:
 **Case 1: Unbounded peaks exist**
 - Extract an antitone subsequence (by `AntitoneSubseq_of_UnBddPeaks`)
 - It's bounded below (inherits from the original sequence)
-- Therefore it's Cauchy (by `IsCauchyOfAntitoneBdd`)
+- Therefore it's Cauchy (by `IsCauchy_of_AntitoneBdd`)
 
 **Case 2: Unbounded peaks don't exist**
 - Extract a monotone subsequence (by `MonotoneSubseq_of_BddPeaks`)
 - It's bounded above (inherits from the original sequence)
-- Therefore it's Cauchy (by `IsCauchyOfMonotoneBdd`)
+- Therefore it's Cauchy (by `IsCauchy_of_MonotoneBdd`)
 
 Either way, we get a Cauchy subsequence. The theorem falls out from the law of excluded middle plus our carefully constructed library of results.
 
@@ -115,15 +115,15 @@ TheoremDoc abs_le as "abs_le" in "Theorems"
 /--
 If a sequence `a : ℕ → X` (where `X` can be `ℚ` or `ℝ`) is antitone and bounded, then it is Cauchy.
 -/
-TheoremDoc IsCauchyOfAntitoneBdd as "IsCauchyOfAntitoneBdd" in "Sequences"
+TheoremDoc IsCauchy_of_AntitoneBdd as "IsCauchy_of_AntitoneBdd" in "Sequences"
 
-Statement IsCauchyOfAntitoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X]
+Statement IsCauchy_of_AntitoneBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X]
     [FloorSemiring X] {a : ℕ → X} {M : X} (ha : Antitone a) (hM : ∀ n, M ≤ a n)
     : IsCauchy a := by
 let b := -a
 have hb : Monotone b := by apply MonotoneNeg_of_Antitone a ha
 have b_bdd : ∀ n, b n ≤ -M := by intro n; change -a n ≤ - M; linarith [hM n]
-have bCauchy : IsCauchy b := IsCauchyOfMonotoneBdd hb b_bdd
+have bCauchy : IsCauchy b := IsCauchy_of_MonotoneBdd hb b_bdd
 have negbCauchy : IsCauchy (-b) := IsCauchyNeg b bCauchy
 change IsCauchy (- -a) at negbCauchy
 rewrite [show - - a = a by ring_nf] at negbCauchy
@@ -153,7 +153,7 @@ rewrite [show τ (τ^[n] 0) = τ^[n + 1] 0 by apply succ_iterate]
 apply hτbnd
 
 
-NewTheorem AntitoneSubseq_of_UnBddPeaks IsCauchyOfAntitoneBdd abs_le
+NewTheorem AntitoneSubseq_of_UnBddPeaks IsCauchy_of_AntitoneBdd abs_le
 
 /--
 If a sequence `a : ℕ → X` (where `X` could be `ℚ` or `ℝ`) is bounded, then it has a subsequence which is Cauchy.
@@ -170,8 +170,8 @@ by_cases hPeaks : UnBddPeaks a
 choose σ σsubseq σanti using AntitoneSubseq_of_UnBddPeaks a hPeaks
 use σ
 split_ands
-exact σsubseq
-apply IsCauchyOfAntitoneBdd σanti
+apply σsubseq
+apply IsCauchy_of_AntitoneBdd σanti
 intro n
 change -M ≤ a (σ n)
 apply aBddBelow
@@ -179,7 +179,7 @@ choose σ σsubseq σmono using MonotoneSubseq_of_BddPeaks a hPeaks
 use σ
 split_ands
 apply σsubseq
-apply IsCauchyOfMonotoneBdd
+apply IsCauchy_of_MonotoneBdd
 apply σmono
 intro n
 change a (σ n) ≤ M
@@ -206,8 +206,8 @@ The proof was... short. Almost suspiciously short. Just:
 Done. Twenty lines of code for a theorem that's worth its weight in gold.
 
 **Why was it so short?** Because you built the right foundation. This lecture wasn't about clever tricks—it was about *architecture*. You spent lectures building:
-- `IsCauchyOfMonotoneBdd` (Lecture 12)
-- `IsCauchyOfAntitoneBdd` (Pset 12)
+- `IsCauchy_of_MonotoneBdd` (Lecture 12)
+- `IsCauchy_of_AntitoneBdd` (Pset 12)
 - `MonotoneSubseq_of_BddPeaks` (Lecture 13)
 - `AntitoneSubseq_of_UnBddPeaks` (Pset 13)
 

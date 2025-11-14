@@ -45,6 +45,8 @@ The idea is to show that the **even** partial sums and **odd** partial sums both
 This will require several technical lemmas (all to be proved in homework), but the main proof brings them all together beautifully!
 
 Your task: Prove the `AlternatingSeriesTest` by showing both even and odd subsequences of partial sums converge to the same limit.
+
+## New Theorems: look up: `AntitoneLimitBound`, `CoherenceOfReals`, `SeqEvenOdd`, `MonotoneSeriesEven`, `AntitoneSeriesOdd`, `BddSeriesEven`, `BddSeriesOdd`, and `DiffGoesToZero`.
 "
 
 /--
@@ -57,27 +59,64 @@ theorem AntitoneLimitBound {a : ℕ → ℝ} (ha : Antitone a) {L : ℝ} (aLim :
   L ≤ a n := by
 sorry
 
+/--
+  If `a → L` and `b → M` and `a - b → 0`, then `L = M`.
+-/
+TheoremDoc CoherenceOfReals as "CoherenceOfReals" in "Sequences"
+
 -- ADD TO HOMEWORK
 theorem CoherenceOfReals {a b : ℕ → ℝ} {L M : ℝ} (ha : SeqLim a L) (hb : SeqLim b M) (hab : SeqLim (fun n ↦ a n - b n) 0) : L = M := by sorry
+
+/--
+  Given `a : ℕ → ℝ`, if `a (2 n) → L` and `a (2n+1) → L`, then `a → L`.
+-/
+TheoremDoc SeqEvenOdd as "SeqEvenOdd" in "Sequences"
 
 -- ADD TO HOMEWORK
 theorem SeqEvenOdd {a : ℕ → ℝ} {L : ℝ} (ha2n : SeqLim (fun n ↦ a (2 * n)) L)
 (ha2np1 : SeqLim (fun n ↦ a (2 * n + 1)) L) : SeqLim a L := by sorry
 
---ADD TO HOMEWORK
-theorem MonotoneSeriesEven {a : ℕ → ℝ} (ha : Antitone a) : Monotone (fun n ↦ ∑ k ∈ range (2 * n), (-1)^k * a k) := by sorry
+/--
+  If `a : ℕ → ℝ` is `Antitone` and `∀ n, 0 ≤ a n`, then the even alternating series `n ↦ ∑ k ∈ range (2n), (-1)^k * a k` is `Monotone`.
+-/
+TheoremDoc MonotoneSeriesEven as "MonotoneSeriesEven" in "Series"
 
 --ADD TO HOMEWORK
-theorem AntitoneSeriesOdd {a : ℕ → ℝ} (ha : Antitone a) : Antitone (fun n ↦ ∑ k ∈ range (2 * n + 1), (-1)^k * a k) := by sorry
+theorem MonotoneSeriesEven {a : ℕ → ℝ} (ha : Antitone a) (apos : ∀ n, 0 ≤ a n) : Monotone (fun n ↦ ∑ k ∈ range (2 * n), (-1)^k * a k) := by sorry
+
+/--
+  If `a : ℕ → ℝ` is `Antitone` and `∀ n, 0 ≤ a n`, then the odd alternating series `n ↦ ∑ k ∈ range (2n+1), (-1)^k * a k` is `Antitone`.
+-/
+TheoremDoc AntitoneSeriesOdd as "AntitoneSeriesOdd" in "Series"
 
 --ADD TO HOMEWORK
-theorem BddSeriesEven {a : ℕ → ℝ} (ha : Antitone a) (n : ℕ) : ∑ k ∈ range (2 * n), (-1)^k * a k ≤ a 0 := by sorry
+theorem AntitoneSeriesOdd {a : ℕ → ℝ} (ha : Antitone a) (apos : ∀ n, 0 ≤ a n) : Antitone (fun n ↦ ∑ k ∈ range (2 * n + 1), (-1)^k * a k) := by sorry
+
+/--
+  If `a : ℕ → ℝ` is `Antitone` and `∀ n, 0 ≤ a n`, then the even alternating series `n ↦ ∑ k ∈ range (2n), (-1)^k * a k` is bounded by `a 0`.
+-/
+TheoremDoc BddSeriesEven as "BddSeriesEven" in "Series"
 
 --ADD TO HOMEWORK
-theorem BddSeriesOdd {a : ℕ → ℝ} (ha : Antitone a) (ha' : ∀ n, 0 ≤ a n) (n : ℕ) : 0 ≤ ∑ k ∈ range (2 * n + 1), (-1)^k * a k := by sorry
+theorem BddSeriesEven {a : ℕ → ℝ} (ha : Antitone a) (apos : ∀ n, 0 ≤ a n) (n : ℕ) : ∑ k ∈ range (2 * n), (-1)^k * a k ≤ a 0 := by sorry
+
+/--
+  If `a : ℕ → ℝ` is `Antitone` and `∀ n, 0 ≤ a n`, then the odd alternating series `n ↦ ∑ k ∈ range (2n+1), (-1)^k * a k` is bounded below by `0`.
+-/
+TheoremDoc BddSeriesOdd as "BddSeriesOdd" in "Series"
 
 --ADD TO HOMEWORK
-theorem DiffGoesToZero {a : ℕ → ℝ} (ha : Antitone a) (aLim : SeqLim a 0) : SeqLim (fun n ↦ ∑ k ∈ range (2 * n + 1), (-1)^k * a k - ∑ k ∈ range (2 * n), (-1)^k * a k) 0 := by sorry
+theorem BddSeriesOdd {a : ℕ → ℝ} (ha : Antitone a) (apos : ∀ n, 0 ≤ a n) (n : ℕ) : 0 ≤ ∑ k ∈ range (2 * n + 1), (-1)^k * a k := by sorry
+
+/--
+  If `a → 0`, then the difference of odd and even alternating series, `n ↦ ∑ k ∈ range (2n+1), (-1)^k * a k - ∑ k ∈ range (2n), (-1)^k * a k` goes to `0`.
+-/
+TheoremDoc DiffGoesToZero as "DiffGoesToZero" in "Series"
+
+--ADD TO HOMEWORK
+theorem DiffGoesToZero {a : ℕ → ℝ} (aLim : SeqLim a 0) : SeqLim (fun n ↦ ∑ k ∈ range (2 * n + 1), (-1)^k * a k - ∑ k ∈ range (2 * n), (-1)^k * a k) 0 := by sorry
+
+NewTheorem AntitoneLimitBound CoherenceOfReals SeqEvenOdd MonotoneSeriesEven AntitoneSeriesOdd BddSeriesEven BddSeriesOdd DiffGoesToZero
 
 /--
   If `a` decreases to `0`, then the alternating series `Series (fun n ↦ (-1)^n * a n)` converges.
@@ -85,20 +124,20 @@ theorem DiffGoesToZero {a : ℕ → ℝ} (ha : Antitone a) (aLim : SeqLim a 0) :
 TheoremDoc AlternatingSeriesTest as "AlternatingSeriesTest" in "Series"
 
 Statement AlternatingSeriesTest {a : ℕ → ℝ} (ha : Antitone a) (aLim : SeqLim a 0) : SeriesConv (fun n ↦ (-1)^n * a n) := by
-have TermsBddBelow : ∀ n, a n ≥ 0 := by apply AntitoneLimitBound ha aLim
+have apos : ∀ n, 0 ≤ a n := by apply AntitoneLimitBound ha aLim
 let S2n : ℕ → ℝ := (fun n ↦ ∑ k ∈ range (2 * n), (-1)^k * a k)
 let S2np1 : ℕ → ℝ := (fun n ↦ ∑ k ∈ range (2 * n + 1), (-1)^k * a k)
-have s2nMono : Monotone S2n := by apply MonotoneSeriesEven ha
-have s2np1Anti : Antitone S2np1 := by apply AntitoneSeriesOdd ha
-have s2nBdd : ∀ n, S2n n ≤ a 0 := by apply BddSeriesEven ha
-have s2np1Bdd : ∀ n, 0 ≤ S2np1 n := by apply BddSeriesOdd ha TermsBddBelow
-have s2nCauchy : IsCauchy S2n := by apply IsCauchyOfMonotoneBdd s2nMono s2nBdd
+have s2nMono : Monotone S2n := by apply MonotoneSeriesEven ha apos
+have s2np1Anti : Antitone S2np1 := by apply AntitoneSeriesOdd ha apos
+have s2nBdd : ∀ n, S2n n ≤ a 0 := by apply BddSeriesEven ha apos
+have s2np1Bdd : ∀ n, 0 ≤ S2np1 n := by apply BddSeriesOdd ha apos
+have s2nCauchy : IsCauchy S2n := by apply IsCauchy_of_MonotoneBdd s2nMono s2nBdd
 have s2nLim : SeqConv S2n := by apply SeqConv_of_IsCauchy s2nCauchy
-have s2np1Cauchy : IsCauchy S2np1 := by apply IsCauchyOfAntitoneBdd s2np1Anti s2np1Bdd
+have s2np1Cauchy : IsCauchy S2np1 := by apply IsCauchy_of_AntitoneBdd s2np1Anti s2np1Bdd
 have s2np1Lim : SeqConv S2np1 := by apply SeqConv_of_IsCauchy s2np1Cauchy
 choose L hL using s2nLim
 choose M hM using s2np1Lim
-have diffZero : SeqLim (fun n ↦ S2np1 n - S2n n) 0 := by apply DiffGoesToZero ha aLim
+have diffZero : SeqLim (fun n ↦ S2np1 n - S2n n) 0 := by apply DiffGoesToZero aLim
 have hLM : M = L :=  CoherenceOfReals hM hL diffZero
 have s2nIs : S2n = fun n ↦ Series (fun k ↦ (-1)^k * a k) (2 * n) := by rfl
 rewrite [s2nIs] at hL

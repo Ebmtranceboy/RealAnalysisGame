@@ -66,12 +66,12 @@ def SeqBdd {X : Type*} [NormedField X] [LinearOrder X] [IsStrictOrderedRing X] (
   ∃ M > 0, ∀ n, |a n| ≤ M
 
 /-- If `a : ℕ → ℝ` is a sequence which converges to a non-zero limit, then it is bounded.
-See also `BddOfConv` which assumes nothing about the limit. -/
-TheoremDoc BddOfConvNonzero as "BddOfConvNonzero" in "Sequences"
+See also `Bdd_of_Conv` which assumes nothing about the limit. -/
+TheoremDoc Bdd_of_ConvNonzero as "Bdd_of_ConvNonzero" in "Sequences"
 
 /-- Prove this
 -/
-Statement BddOfConvNonzero (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) (hL : L ≠ 0) :
+Statement Bdd_of_ConvNonzero (a : ℕ → ℝ) (L : ℝ) (ha : SeqLim a L) (hL : L ≠ 0) :
     SeqBdd a := by
 choose N hN using EventuallyBdd_of_SeqConv a L ha hL
 use 2 * |L| + ∑ k ∈ range N, |a k|

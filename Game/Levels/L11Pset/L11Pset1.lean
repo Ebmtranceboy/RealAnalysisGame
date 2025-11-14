@@ -18,7 +18,7 @@ Statement (a : ℕ → ℝ) (ha : ∀ n, a n = n)
 intro h
 choose σ σ_subseq hσ using h
 choose L hL using hσ
-choose M Mpos hM using BddOfConv (a ∘ σ) L hL
+choose M Mpos hM using Bdd_of_Conv (a ∘ σ) L hL
 let n : ℕ := ⌈M⌉₊ + 1
 have hn : (n : ℝ) = ⌈M⌉₊ + 1 := by exact_mod_cast (by rfl)
 have hn' : M ≤ ⌈M⌉₊ := by bound

@@ -24,10 +24,10 @@ Statement ProdLim (a b c : ℕ → ℝ) (L M : ℝ) (ha : SeqLim a L)
 by_cases hL : L = 0
 rewrite [hL] at ha ⊢
 rewrite [(by ring_nf : 0 * M = 0)]
-have f : SeqBdd b := by apply BddOfConv b M hb
+have f : SeqBdd b := by apply Bdd_of_Conv b M hb
 apply LimZeroTimesBdd a b c ha f hc
 by_cases hM : M = 0
-have f : SeqBdd a := by apply BddOfConv a L ha
+have f : SeqBdd a := by apply Bdd_of_Conv a L ha
 rewrite [hM] at hb ⊢
 rewrite [(by ring_nf : L * 0 = 0)]
 have hc' : ∀ n, c n = b n * a n := by intro n; rewrite [hc]; ring_nf
