@@ -50,17 +50,16 @@ If `n ≤ m`, then `Series a m - Series a n = ∑ k ∈ Ico n m, a k`.
 -/
 TheoremDoc DiffOfSeries as "DiffOfSeries" in "Theorems"
 
--- HOMEWORK
 theorem DiffOfSeries (a : ℕ → ℝ) {n m : ℕ} (hmn : n ≤ m) :
   Series a m - Series a n = ∑ k ∈ Ico n m, a k := by
 sorry
 
+-- Future: replace `Series_abs_add` by `(Finset.)abs_sum_le_sum_abs`?
 /--
 If `n ≤ m`, then `|∑ k ∈ Ico n m, a k| ≤ ∑ k ∈ Ico n m, |a k|`.
 -/
 TheoremDoc Series_abs_add as "Series_abs_add" in "Theorems"
 
--- HOMEWORK
 theorem Series_abs_add (a : ℕ → ℝ) {n m : ℕ} (hmn : n ≤ m) :
   |∑ k ∈ Ico n m, a k| ≤ ∑ k ∈ Ico n m, |a k| := by
 sorry
