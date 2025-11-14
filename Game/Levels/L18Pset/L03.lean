@@ -17,7 +17,6 @@ DisabledTheorem AntitoneLimitBound
 -/
 Statement {a : ℕ → ℝ} (ha : Antitone a) {L : ℝ} (aLim : SeqLim a L) : ∀ n,
   L ≤ a n := by
-
 sorry
 
 Conclusion "
