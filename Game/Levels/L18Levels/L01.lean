@@ -35,18 +35,37 @@ We will use two helper lemmas (to be proved as homework):
 
 Your task: Prove `Conv_of_AbsSeriesConv` using the Cauchy criterion and these lemmas.
 "
+/-- `(a : ℕ → ℝ) := SeriesConv (fun n ↦ |a n|)`
+
+We say that a sequence `a : ℕ → ℝ` converges absolutely if `∑ |a n|` converges.-/
+DefinitionDoc AbsSeriesConv as "AbsSeriesConv"
+
+NewDefinition AbsSeriesConv
 
 def AbsSeriesConv (a : ℕ → ℝ) : Prop := SeriesConv (fun n ↦ |a n|)
+
+
+/--
+If `n ≤ m`, then `Series a m - Series a n = ∑ k ∈ Ico n m, a k`.
+-/
+TheoremDoc DiffOfSeries as "DiffOfSeries" in "Theorems"
 
 -- HOMEWORK
 theorem DiffOfSeries (a : ℕ → ℝ) {n m : ℕ} (hmn : n ≤ m) :
   Series a m - Series a n = ∑ k ∈ Ico n m, a k := by
 sorry
 
+/--
+If `n ≤ m`, then `|∑ k ∈ Ico n m, a k| ≤ ∑ k ∈ Ico n m, |a k|`.
+-/
+TheoremDoc Series_abs_add as "Series_abs_add" in "Theorems"
+
 -- HOMEWORK
 theorem Series_abs_add (a : ℕ → ℝ) {n m : ℕ} (hmn : n ≤ m) :
   |∑ k ∈ Ico n m, a k| ≤ ∑ k ∈ Ico n m, |a k| := by
 sorry
+
+NewTheorem DiffOfSeries Series_abs_add
 
 /--
   If `Series (fun n ↦ |a n|)` converges, then `Series a` converges.
@@ -93,83 +112,3 @@ Remember: The converse is *not* true. There exist series that converge but do no
 
 The distinction between absolute and conditional convergence is one of the most important concepts in real analysis.
 "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#exit
-
-
-/--
-  If `Series (fun n ↦ |a n|)` converges, then `Series a` converges.
--/
-TheoremDoc DiffSeries as "DiffSeries" in "Series"
-
--- ADD TO HOMEWORK
-theorem DiffSeries (a : ℕ → ℝ) {m n : ℕ} (hnm : n ≤ m) :
-  Series a m - Series a n = ∑ k ∈ Ico n m, a k := by
-change ∑ k ∈ range m, a k - ∑ k ∈ range n, a k = ∑ k ∈ Ico n m, a k
-refine Eq.symm (sum_Ico_eq_sub a hnm)
-
--- ADD TO HOMEWORK
-theorem Ico0_eq_Range (n : ℕ) : Ico 0 n = range n := by
-sorry
-
--- ADD TO HOMEWORK
-theorem Series_abs_add (a : ℕ → ℝ) (n m : ℕ) : |∑ k ∈ Ico n (n + m), a k| ≤ ∑ k ∈ Ico n (n + m), |a k| := by
-induction' m with m hm
-bound
-rewrite [← DiffSeries a (show n ≤ n + (m + 1) by bound)]
-sorry
-
-
-Statement Conv_of_AbsSeriesConv {a : ℕ → ℝ} (ha : AbsSeriesConv a) : SeriesConv a := by
-apply SeqConv_of_IsCauchy
-change SeqConv (Series (fun n ↦ |a n|)) at ha
-apply IsCauchy_of_SeqConv at ha
-intro ε hε
-choose N hN using ha ε hε
-use N
-intro n hn m hnm
-rewrite [DiffSeries a hnm]
-let ℓ := m - n
-have hℓ : m = n + ℓ := by grind
-have habs : |∑ k ∈ Ico n (n + ℓ), a k| ≤ ∑ k ∈ Ico n (n + ℓ), |a k| := by apply Series_abs_add a n ℓ
-rewrite [← hℓ] at habs
-specialize hN n hn m hnm
-rewrite [DiffSeries (fun n ↦ |a n|) hnm] at hN
-have h : ∑ k ∈ Ico n m, |a k| ≤ |∑ k ∈ Ico n m, (|a k|)| := by bound
-linarith [habs, hN, h]

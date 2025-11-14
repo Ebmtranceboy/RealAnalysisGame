@@ -170,7 +170,7 @@ by_cases hPeaks : UnBddPeaks a
 choose σ σsubseq σanti using AntitoneSubseq_of_UnBddPeaks a hPeaks
 use σ
 split_ands
-exact σsubseq
+apply σsubseq
 apply IsCauchy_of_AntitoneBdd σanti
 intro n
 change -M ≤ a (σ n)

@@ -89,7 +89,7 @@ TheoremDoc SeqConv_of_IsCauchy as "SeqConv_of_IsCauchy" in "Sequences"
 
 /-- If `a : ℕ → ℝ` is Monotone and bounded, then `SeqConv a`.
 -/
-TheoremDoc SeqConv_of_MonotoneBdd as "SeqConv_of_MonotoneBdd" in "Series"
+TheoremDoc SeqConv_of_MonotoneBdd as "SeqConv_of_MonotoneBdd" in "Sequences"
 
 theorem SeqConv_of_MonotoneBdd (a : ℕ → ℝ) (M : ℝ) (hM : ∀ n, a n ≤ M) (ha : Monotone a) :
   SeqConv a := by
@@ -151,7 +151,7 @@ Monotone + Bounded = Convergent! This is one of the fundamental patterns in real
 Notice that we've proven convergence but **not** computed the exact value! We know the series converges to *some* real number less than 1, but we don't know what it is.
 
 Computing the exact value is much harder. Euler's brilliant solution in 1734 showed:
-`∑_{k=1}^∞ 1/k² = π²/6 ≈ 1.6449...`
+$\\sum_{k=1}^\\infty 1/k^2 = \\pi^2/6 \\approx 1.6449...$
 
 See the homework problems for more details!
 
